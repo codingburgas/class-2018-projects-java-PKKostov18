@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [JavaProject]    Script Date: 24.3.2022 г. 21:00:26 ******/
+/****** Object:  Database [JavaProject]    Script Date: 26.3.2022 г. 23:23:27 ******/
 CREATE DATABASE [JavaProject]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -73,7 +73,7 @@ ALTER DATABASE [JavaProject] SET DELAYED_DURABILITY = DISABLED
 GO
 USE [JavaProject]
 GO
-/****** Object:  Table [dbo].[actors]    Script Date: 24.3.2022 г. 21:00:26 ******/
+/****** Object:  Table [dbo].[actors]    Script Date: 26.3.2022 г. 23:23:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -87,7 +87,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[actorsmovies]    Script Date: 24.3.2022 г. 21:00:26 ******/
+/****** Object:  Table [dbo].[actorsmovies]    Script Date: 26.3.2022 г. 23:23:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -102,7 +102,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[favourites]    Script Date: 24.3.2022 г. 21:00:26 ******/
+/****** Object:  Table [dbo].[favourites]    Script Date: 26.3.2022 г. 23:23:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -117,21 +117,21 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genres]    Script Date: 24.3.2022 г. 21:00:26 ******/
+/****** Object:  Table [dbo].[genres]    Script Date: 26.3.2022 г. 23:23:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[genres](
-	[GenreId] [int] NOT NULL,
+	[GenreId] [int] IDENTITY(1,1) NOT NULL,
 	[Genre] [varchar](45) NOT NULL,
-PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK__genres__0385057ED9393D7F] PRIMARY KEY CLUSTERED 
 (
 	[GenreId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genresmovies]    Script Date: 24.3.2022 г. 21:00:26 ******/
+/****** Object:  Table [dbo].[genresmovies]    Script Date: 26.3.2022 г. 23:23:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -146,7 +146,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[movies]    Script Date: 24.3.2022 г. 21:00:26 ******/
+/****** Object:  Table [dbo].[movies]    Script Date: 26.3.2022 г. 23:23:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -166,7 +166,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[users]    Script Date: 24.3.2022 г. 21:00:26 ******/
+/****** Object:  Table [dbo].[users]    Script Date: 26.3.2022 г. 23:23:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -183,6 +183,82 @@ PRIMARY KEY CLUSTERED
 	[UserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[genres] ON 
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (1, N'Action')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (2, N'Biography')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (3, N'Crime')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (4, N'Family')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (5, N'History')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (6, N'Music')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (7, N'Romance')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (8, N'Thriller')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (9, N'Western')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (10, N'Adventure')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (11, N'Costume')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (12, N'Documentary')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (13, N'Fantasy')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (14, N'Horror')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (15, N'Mystery')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (16, N'Sci-Fi')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (17, N'TV Show')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (18, N'Animation')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (19, N'Comedy')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (20, N'Drama')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (21, N'Game-Show')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (22, N'Kungfu')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (23, N'Reality-Show')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (24, N'Sport')
+GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (25, N'War')
+GO
+SET IDENTITY_INSERT [dbo].[genres] OFF
+GO
+SET IDENTITY_INSERT [dbo].[users] ON 
+GO
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (1, N'Plamen', N'Kostov', N'PKKostov18@codingburgas.bg', N'pacata69', N'plamen123')
+GO
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (3, N'Ilian', N'Yanev', N'IMYanev18@codingburgas.bg', N'iyanev66', N'ilko123')
+GO
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (4, N'Radoslav', N'Stoychev18@codingburgas.bg', N'RAStoychev18@codingburgas.bg', N'radofifa1', N'rado123')
+GO
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (5, N'Ivan', N'Ivanov', N'ITIvanov18@codingburgas.bg', N'tsarivan', N'vanko123')
+GO
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (6, N'Kaloyan', N'Andrikov', N'KNAndrikov18@codingburgas.bg', N'neotrax', N'kalata123')
+GO
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (7, N'Jelqzko', N'Ivanov', N'ZAIivanov18@codingburgas.bg', N'jelqzko', N'jelqzko123')
+GO
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (8, N'Plamen', N'Petkov', N'PCPetkov18@codingburgas.bg', N'paleca', N'paleca123')
+GO
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (9, N'Stanislav', N'Todorov', N'SATodorov18@codingburgas.bg', N'ST', N'trunio123')
+GO
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (10, N'Kristian', N'Lalev', N'KALalev18@codingburgas.bg', N'kavalkata', N'kavalkata123')
+GO
+SET IDENTITY_INSERT [dbo].[users] OFF
 GO
 ALTER TABLE [dbo].[movies] ADD  DEFAULT (NULL) FOR [Description]
 GO
