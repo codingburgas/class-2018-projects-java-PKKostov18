@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [JavaProject]    Script Date: 26.3.2022 г. 23:23:27 ******/
+/****** Object:  Database [JavaProject]    Script Date: 20.5.2022 г. 21:39:45 ******/
 CREATE DATABASE [JavaProject]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -73,7 +73,7 @@ ALTER DATABASE [JavaProject] SET DELAYED_DURABILITY = DISABLED
 GO
 USE [JavaProject]
 GO
-/****** Object:  Table [dbo].[actors]    Script Date: 26.3.2022 г. 23:23:27 ******/
+/****** Object:  Table [dbo].[actors]    Script Date: 20.5.2022 г. 21:39:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -87,7 +87,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[actorsmovies]    Script Date: 26.3.2022 г. 23:23:27 ******/
+/****** Object:  Table [dbo].[actorsmovies]    Script Date: 20.5.2022 г. 21:39:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -102,7 +102,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[favourites]    Script Date: 26.3.2022 г. 23:23:27 ******/
+/****** Object:  Table [dbo].[favourites]    Script Date: 20.5.2022 г. 21:39:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -117,7 +117,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genres]    Script Date: 26.3.2022 г. 23:23:27 ******/
+/****** Object:  Table [dbo].[genres]    Script Date: 20.5.2022 г. 21:39:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +131,7 @@ CREATE TABLE [dbo].[genres](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genresmovies]    Script Date: 26.3.2022 г. 23:23:27 ******/
+/****** Object:  Table [dbo].[genresmovies]    Script Date: 20.5.2022 г. 21:39:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -146,7 +146,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[movies]    Script Date: 26.3.2022 г. 23:23:27 ******/
+/****** Object:  Table [dbo].[movies]    Script Date: 20.5.2022 г. 21:39:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -166,7 +166,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[users]    Script Date: 26.3.2022 г. 23:23:27 ******/
+/****** Object:  Table [dbo].[users]    Script Date: 20.5.2022 г. 21:39:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -178,7 +178,9 @@ CREATE TABLE [dbo].[users](
 	[Email] [varchar](45) NOT NULL,
 	[Username] [varchar](45) NOT NULL,
 	[Password] [varchar](45) NOT NULL,
-PRIMARY KEY CLUSTERED 
+	[Salt] [nvarchar](50) NULL,
+	[Admin] [bit] NOT NULL,
+ CONSTRAINT [PK__users__1788CC4C59D87B01] PRIMARY KEY CLUSTERED 
 (
 	[UserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -240,27 +242,29 @@ SET IDENTITY_INSERT [dbo].[genres] OFF
 GO
 SET IDENTITY_INSERT [dbo].[users] ON 
 GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (1, N'Plamen', N'Kostov', N'PKKostov18@codingburgas.bg', N'pacata69', N'plamen123')
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (1, N'Plamen', N'Kostov', N'PKKostov18@codingburgas.bg', N'pacata69', N'plamen123', NULL, 0)
 GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (3, N'Ilian', N'Yanev', N'IMYanev18@codingburgas.bg', N'iyanev66', N'ilko123')
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (3, N'Ilian', N'Yanev', N'IMYanev18@codingburgas.bg', N'iyanev66', N'ilko123', NULL, 0)
 GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (4, N'Radoslav', N'Stoychev18@codingburgas.bg', N'RAStoychev18@codingburgas.bg', N'radofifa1', N'rado123')
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (4, N'Radoslav', N'Stoychev18@codingburgas.bg', N'RAStoychev18@codingburgas.bg', N'radofifa1', N'rado123', NULL, 0)
 GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (5, N'Ivan', N'Ivanov', N'ITIvanov18@codingburgas.bg', N'tsarivan', N'vanko123')
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (5, N'Ivan', N'Ivanov', N'ITIvanov18@codingburgas.bg', N'tsarivan', N'vanko123', NULL, 0)
 GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (6, N'Kaloyan', N'Andrikov', N'KNAndrikov18@codingburgas.bg', N'neotrax', N'kalata123')
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (6, N'Kaloyan', N'Andrikov', N'KNAndrikov18@codingburgas.bg', N'neotrax', N'kalata123', NULL, 0)
 GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (7, N'Jelqzko', N'Ivanov', N'ZAIivanov18@codingburgas.bg', N'jelqzko', N'jelqzko123')
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (7, N'Jelqzko', N'Ivanov', N'ZAIivanov18@codingburgas.bg', N'jelqzko', N'jelqzko123', NULL, 0)
 GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (8, N'Plamen', N'Petkov', N'PCPetkov18@codingburgas.bg', N'paleca', N'paleca123')
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (8, N'Plamen', N'Petkov', N'PCPetkov18@codingburgas.bg', N'paleca', N'paleca123', NULL, 0)
 GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (9, N'Stanislav', N'Todorov', N'SATodorov18@codingburgas.bg', N'ST', N'trunio123')
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (9, N'Stanislav', N'Todorov', N'SATodorov18@codingburgas.bg', N'ST', N'trunio123', NULL, 0)
 GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password]) VALUES (10, N'Kristian', N'Lalev', N'KALalev18@codingburgas.bg', N'kavalkata', N'kavalkata123')
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (10, N'Kristian', N'Lalev', N'KALalev18@codingburgas.bg', N'kavalkata', N'kavalkata123', NULL, 0)
 GO
 SET IDENTITY_INSERT [dbo].[users] OFF
 GO
 ALTER TABLE [dbo].[movies] ADD  DEFAULT (NULL) FOR [Description]
+GO
+ALTER TABLE [dbo].[users] ADD  CONSTRAINT [DF_users_Admin]  DEFAULT ((0)) FOR [Admin]
 GO
 ALTER TABLE [dbo].[actorsmovies]  WITH CHECK ADD  CONSTRAINT [FK_ActorsActorsMovies] FOREIGN KEY([ActorId])
 REFERENCES [dbo].[actors] ([ActorId])
