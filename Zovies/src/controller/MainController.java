@@ -2,45 +2,43 @@ package controller;
 import utils.ConsoleUtils;
 import java.util.*;
 
-
 public class MainController {
 	
-	
+	private AuthenticationController auth = new AuthenticationController();
 	
 	public void run() {
 
-		
 		String optionForAccount;
 		
-		ConsoleUtils.writeConsoleLine("+------------------------------------------------------------------+");
-		ConsoleUtils.writeConsoleLine("|                                                                  |");
-		ConsoleUtils.writeConsoleLine("|                        WELCOME TO ZOVIES                         |");
-		ConsoleUtils.writeConsoleLine("|                                                                  |");
-		ConsoleUtils.writeConsoleLine("+------------------------------------------------------------------+");
-		ConsoleUtils.writeConsoleLine("|                                                                  |");
-		ConsoleUtils.writeConsoleLine("|                      DO YOU HAVE AN ACCOUNT?                     |");
-		ConsoleUtils.writeConsoleLine("|        __________________________________________________        |");
-		ConsoleUtils.writeConsoleLine("|                                                                  |");
-		ConsoleUtils.writeConsoleLine("|                             1. Yes                               |");
-		ConsoleUtils.writeConsoleLine("|                             2. No                                |");
-		ConsoleUtils.writeConsoleLine("|                                                                  |");
-		ConsoleUtils.writeConsoleLine("+------------------------------------------------------------------+");
+		ConsoleUtils.write("+------------------------------------------------------------------+");
+		ConsoleUtils.write("|                                                                  |");
+		ConsoleUtils.write("|                        WELCOME TO ZOVIES                         |");
+		ConsoleUtils.write("|                                                                  |");
+		ConsoleUtils.write("+------------------------------------------------------------------+");
+		ConsoleUtils.write("|                                                                  |");
+		ConsoleUtils.write("|                      DO YOU HAVE AN ACCOUNT?                     |");
+		ConsoleUtils.write("|        __________________________________________________        |");
+		ConsoleUtils.write("|                                                                  |");
+		ConsoleUtils.write("|                             1. Yes                               |");
+		ConsoleUtils.write("|                             2. No                                |");
+		ConsoleUtils.write("|                                                                  |");
+		ConsoleUtils.write("+------------------------------------------------------------------+");
 		
-		optionForAccount=ConsoleUtils.readConsoleLine();
+		System.out.print("Choose: "); optionForAccount=ConsoleUtils.read();
 		
-		if(Integer.parseInt(optionForAccount)!=1 && Integer.parseInt(optionForAccount)!=2)
+		while(Integer.parseInt(optionForAccount)!=1 && Integer.parseInt(optionForAccount)!=2)
 		{
-			ConsoleUtils.writeConsoleLine("+------------------------------------------------------------------+");
-			ConsoleUtils.writeConsoleLine("|                   Please enter a valid option!                   |");
-			ConsoleUtils.writeConsoleLine("+------------------------------------------------------------------+");
+			ConsoleUtils.write("+------------------------------------------------------------------+");
+			ConsoleUtils.write("|                   Please enter a valid option!                   |");
+			ConsoleUtils.write("+------------------------------------------------------------------+");
+			
+			optionForAccount=ConsoleUtils.read();
 		}
 		
-
-
-
-
-
-
+		if(Integer.parseInt(optionForAccount) == 1) {
+			auth.run();
+		} else if(Integer.parseInt(optionForAccount) == 1) {
+			
+		}
 	}
-
 }
