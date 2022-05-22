@@ -1,5 +1,7 @@
 package controller;
 
+import menus.AccountMenus;
+
 import services.AuthenticationService;
 import utils.ConsoleUtils;
 
@@ -26,10 +28,13 @@ public class AuthenticationController {
 
         while (authService.getLoggedUser() == null) { 
 
-        	ConsoleUtils.write("Username: ");
+        	
+        	//ConsoleUtils.write(AccountMenus.Login());
+        	
+        	ConsoleUtils.write("USERNAME: ");
             String username = ConsoleUtils.read();
 
-            ConsoleUtils.write("Password: ");
+            ConsoleUtils.write("PASSWORD: ");
             String password = ConsoleUtils.read();
 
             authService.authenticateUser(username, password);
