@@ -28,7 +28,7 @@ public class UserService {
     
     private static void createInitialUser() {
         String adminpass = "adminpass"; 
-        User user = new User("Administrator", "Administrator", "admin", "PKKostov18@codingburgas.bg", 
+        User user = new User(999, "Administrator", "Administrator", "admin", "PKKostov18@codingburgas.bg", 
         		"adminpass", PasswordManager.getNextSalt(), 1);
         user.setUsername("admin");
         user.setSalt(PasswordManager.getNextSalt()); 
@@ -41,8 +41,13 @@ public class UserService {
         //usersRepository.saveUser(user);
     }
 
-	public User getRegisteredUser(String username, String password) {
+	public String getRegisteredUser(String username, String password) {
 		List<User> users = usersRepository.getRegisteredUser(username, password);
-		return (User) users;
+		
+		if(users.isEmpty()) {
+			return null;
+		} 
+
+		return users.toString();
 	}
 }

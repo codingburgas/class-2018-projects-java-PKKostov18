@@ -14,9 +14,10 @@ public class User {
     
     //Constructor
    
-    public User(String firstName, String lastName, String username, String email, String password, String salt,
+    public User(int userId, String firstName, String lastName, String username, String email, String password, String salt,
 			int admin) {
 		super();
+		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
@@ -111,4 +112,9 @@ public class User {
                 ", password = " + password +
                 '}';
     }
+
+	public boolean isAdmin() {
+		
+		return false;
+	}
 }

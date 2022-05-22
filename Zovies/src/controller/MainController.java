@@ -1,11 +1,19 @@
 package controller;
 import utils.ConsoleUtils;
+import services.AuthenticationService;
 import java.util.*;
 
 public class MainController {
 	
-	private AuthenticationController auth = new AuthenticationController();
+	private AuthenticationController authController  = new AuthenticationController();
+	private RegisterController register = new RegisterController();
 	
+	private AuthenticationService authService;
+	
+	public MainController() {
+        this.authService = AuthenticationService.getInstance();
+    }
+
 	public void run() {
 
 		String optionForAccount;
@@ -36,9 +44,26 @@ public class MainController {
 		}
 		
 		if(Integer.parseInt(optionForAccount) == 1) {
-			auth.run();
-		} else if(Integer.parseInt(optionForAccount) == 1) {
+			authController .run();
 			
+			if (authService.getLoggedUser() != null) {
+
+	            /*if (authService.getLoggedUser().isAdmin()) {
+
+	                AdministrationController administrationController = new AdministrationController();
+	                administrationController.run();
+	            } else {
+
+	                
+	            }*/
+				
+				System.out.println(authService.getLoggedUser());
+	            LoggedUserManagementController loggedUserController = 	new LoggedUserManagementController();
+	            loggedUserController.run();
+	        }
+			
+		} else if(Integer.parseInt(optionForAccount) == 2) {
+			register.run();
 		}
 	}
 }

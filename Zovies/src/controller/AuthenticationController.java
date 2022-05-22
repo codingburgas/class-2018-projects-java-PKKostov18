@@ -6,6 +6,17 @@ import utils.ConsoleUtils;
 public class AuthenticationController {
 	
 	private final AuthenticationService authService;
+	
+	private static AuthenticationController instance = null;
+
+    public static AuthenticationController getInstance() {
+
+        if (AuthenticationController.instance == null) {
+        	AuthenticationController.instance = new AuthenticationController();
+		}
+
+        return AuthenticationController.instance;
+    }
     
     public AuthenticationController() {
         this.authService = AuthenticationService.getInstance();

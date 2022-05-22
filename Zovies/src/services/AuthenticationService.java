@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import models.User;
 
 public class AuthenticationService {
@@ -16,13 +18,13 @@ public class AuthenticationService {
         return AuthenticationService.instance;
     }
 
-    private AuthenticationService() {
+    public AuthenticationService() {
 		this.userService = UserService.getInstance();
     }
 
-    private User authenticatedUser = null;
+    private String authenticatedUser = null;
 
-    public User getLoggedUser() {
+    public String getLoggedUser() {
         return authenticatedUser;
     }
 
