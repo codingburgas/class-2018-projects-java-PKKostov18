@@ -1,9 +1,16 @@
 package controller;
 
+import menus.AdminMenu;
+import utils.ConsoleUtils;
+
 public class AdministrationController {
+	
+	AdminMenu adminMenu = new AdminMenu();
+	
 
 	public void run() {
-		// TODO Auto-generated method stub
+		
+		ConsoleUtils.write(adminMenu.adminMenu());
 		
 	}
 

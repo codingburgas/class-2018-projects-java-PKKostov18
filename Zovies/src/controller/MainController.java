@@ -1,6 +1,7 @@
 package controller;
 
 import menus.WelcomePageMenu;
+import repositories.UserRepository;
 import menus.ErrorMenus;
 
 import utils.ConsoleUtils;
@@ -13,6 +14,8 @@ public class MainController {
 	private RegisterController register = new RegisterController();
 	private WelcomePageMenu welcomeMenu = new WelcomePageMenu();
 	private ErrorMenus errorMenu = new ErrorMenus();
+	
+	private UserRepository repo = new UserRepository();
 	
 	private AuthenticationService authService;
 	
@@ -41,20 +44,15 @@ public class MainController {
 			
 			if (authService.getLoggedUser() != null) {
 
-	            /*if (authService.getLoggedUser().isAdmin()) {
+	            if (authService.isAdmin() == true) {
 
 	                AdministrationController administrationController = new AdministrationController();
 	                administrationController.run();
-	            } else {
-
-	                
-	            }*/
-				
-				System.out.println(authService.getLoggedUser());
-	            LoggedUserManagementController loggedUserController = 	new LoggedUserManagementController();
-	            loggedUserController.run();
+		        } else {
+		            LoggedUserManagementController loggedUserController = new LoggedUserManagementController();
+		            loggedUserController.run();
+		        }  
 	        }
-			
 		} else if(Integer.parseInt(optionForAccount) == 2) {
 			register.run();
 		}

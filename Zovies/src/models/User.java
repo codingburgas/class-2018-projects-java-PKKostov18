@@ -109,12 +109,8 @@ public class User {
                 ", lastName = " + lastName + '\'' +
                 ", email = " + email + '\'' +
                 ", username = " + username + '\'' +
-                ", password = " + password +
+                ", password = " + password + '\'' +
+                ", admin = " + admin +
                 '}';
     }
-
-	public boolean isAdmin() {
-		
-		return false;
-	}
 }

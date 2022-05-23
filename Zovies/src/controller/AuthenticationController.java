@@ -38,6 +38,7 @@ public class AuthenticationController {
             String password = ConsoleUtils.read();
 
             authService.authenticateUser(username, password);
+            authService.getAdmin(username, password);
             
             if(authService.getLoggedUser() == null) {
             	ConsoleUtils.write(errorMenu.UnvalidDataError());

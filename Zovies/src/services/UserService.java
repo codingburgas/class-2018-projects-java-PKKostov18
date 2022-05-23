@@ -41,13 +41,22 @@ public class UserService {
         //usersRepository.saveUser(user);
     }
 
-	public String getRegisteredUser(String username, String password) {
+	public List<User> getRegisteredUser(String username, String password) {
 		List<User> users = usersRepository.getRegisteredUser(username, password);
 		
 		if(users.isEmpty()) {
 			return null;
 		} 
 
-		return users.toString();
+		return users;
+	}
+
+	public boolean getAdminUser(String username, String password) {
+		
+		boolean adminUser = usersRepository.getAdminUser(username, password);
+		if(adminUser == false) {
+			return false;
+		}
+		return true;
 	}
 }

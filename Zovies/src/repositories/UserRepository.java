@@ -58,11 +58,34 @@ public class UserRepository {
 				User user = mapToUser(resultSet);
 				listOfUsers.add(user);	
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return listOfUsers;
+	}
+	
+	public boolean getAdminUser(String username, String password) {
+		String query = "SELECT * FROM users WHERE Username = ? AND Password = ?;";
+		try (Connection conn = DriverManager.getConnection(ApplicationProperties.JDBC_URL);
+				PreparedStatement ps = conn.prepareStatement(query)) {
+			
+			ps.setString(1, username);
+			ps.setString(2, password);
+			
+			ResultSet resultSet = ps.executeQuery();
+			
+			while (resultSet.next()) {
+				if(resultSet.getInt("Admin") == 0) {
+					return false;
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return true;
 	}
 
 	public void insertUser(String firstName, String lastName, String email, String username, String password,

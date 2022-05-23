@@ -3,7 +3,8 @@ package menus;
 import utils.ConsoleUtils;
 
 public class AdminMenu {
-	public String Login() {
+	
+	public String adminMenu() {
 		
 		ConsoleUtils.write("+------------------------------------------------------------------+");
 		ConsoleUtils.write("|                                                                  |");
