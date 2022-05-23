@@ -1,7 +1,7 @@
 package controller;
 
 import menus.WelcomePageMenu;
-import menus.UnvalidInputErrorMenu;
+import menus.ErrorMenus;
 
 import utils.ConsoleUtils;
 import services.AuthenticationService;
@@ -9,10 +9,10 @@ import java.util.*;
 
 public class MainController {
 	
-	private AuthenticationController authController  = new AuthenticationController();
+	private AuthenticationController authController = new AuthenticationController();
 	private RegisterController register = new RegisterController();
 	private WelcomePageMenu welcomeMenu = new WelcomePageMenu();
-	private UnvalidInputErrorMenu errorMenu = new UnvalidInputErrorMenu();
+	private ErrorMenus errorMenu = new ErrorMenus();
 	
 	private AuthenticationService authService;
 	
@@ -26,7 +26,7 @@ public class MainController {
 		
 		ConsoleUtils.write(welcomeMenu.WelcomePage());
 		
-		 optionForAccount=ConsoleUtils.read();
+		optionForAccount = ConsoleUtils.read();
 		
 		while(Integer.parseInt(optionForAccount)!=1 && Integer.parseInt(optionForAccount)!=2)
 		{
@@ -37,7 +37,7 @@ public class MainController {
 		}
 		
 		if(Integer.parseInt(optionForAccount) == 1) {
-			authController .run();
+			authController.run();
 			
 			if (authService.getLoggedUser() != null) {
 

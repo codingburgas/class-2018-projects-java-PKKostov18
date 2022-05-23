@@ -4,7 +4,7 @@ import utils.ConsoleUtils;
 
 public class WelcomePageMenu {
 
-	public String WelcomePage()
+	public String WelcomePage() {
 		ConsoleUtils.write("+------------------------------------------------------------------+");
 		ConsoleUtils.write("|                                                                  |");
 		ConsoleUtils.write("|                        WELCOME TO ZOVIES                         |");
