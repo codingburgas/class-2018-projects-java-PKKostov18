@@ -4,8 +4,7 @@ import utils.ConsoleUtils;
 
 public class WelcomePageMenu {
 
-	public void WelcomePage(String[] args) {
-		
+	public String WelcomePage()
 		ConsoleUtils.write("+------------------------------------------------------------------+");
 		ConsoleUtils.write("|                                                                  |");
 		ConsoleUtils.write("|                        WELCOME TO ZOVIES                         |");
@@ -21,6 +20,8 @@ public class WelcomePageMenu {
 		ConsoleUtils.write("+------------------------------------------------------------------+");
 		
 		System.out.print("Please choose: ");
+		
+		return "";
 		
 	}
 

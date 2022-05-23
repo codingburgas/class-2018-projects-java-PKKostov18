@@ -11,6 +11,8 @@ public class MainController {
 	
 	private AuthenticationController authController  = new AuthenticationController();
 	private RegisterController register = new RegisterController();
+	private WelcomePageMenu welcomeMenu = new WelcomePageMenu();
+	private UnvalidInputErrorMenu errorMenu = new UnvalidInputErrorMenu();
 	
 	private AuthenticationService authService;
 	
@@ -22,14 +24,14 @@ public class MainController {
 
 		String optionForAccount;
 		
-		//ConsoleUtils.write(WelcomePageMenu.WelcomePage());
+		ConsoleUtils.write(welcomeMenu.WelcomePage());
 		
 		 optionForAccount=ConsoleUtils.read();
 		
 		while(Integer.parseInt(optionForAccount)!=1 && Integer.parseInt(optionForAccount)!=2)
 		{
 			
-			//ConsoleUtils.write(UnvalidInputErrorMenu.UnvalidInputError());
+			ConsoleUtils.write(errorMenu.UnvalidInputError());
 			
 			optionForAccount=ConsoleUtils.read();
 		}

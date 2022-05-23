@@ -4,11 +4,13 @@ import utils.ConsoleUtils;
 
 public class UnvalidInputErrorMenu {
 
-	public void UnvalidInputError(String[] args) {
+	public String UnvalidInputError() {
 		
 		ConsoleUtils.write("+------------------------------------------------------------------+");
 		ConsoleUtils.write("|                   Please enter a valid option!                   |");
 		ConsoleUtils.write("+------------------------------------------------------------------+");
+		
+		return "";
 		
 	}
 

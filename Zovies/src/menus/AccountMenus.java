@@ -4,7 +4,7 @@ import utils.ConsoleUtils;
 
 public class AccountMenus {
 
-	public void Login(String[] args) {
+	public String Login() {
 		
 		ConsoleUtils.write("+------------------------------------------------------------------+");
 		ConsoleUtils.write("|                                                                  |");
@@ -14,12 +14,14 @@ public class AccountMenus {
 		ConsoleUtils.write("|                                                                  |");
 		ConsoleUtils.write("|              Please type your username and password              |");
 		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("+------------------------------------------------------------------+");		
+		ConsoleUtils.write("+------------------------------------------------------------------+");	
+		
+		return "";
 		
 	}
 
 	
-public void Register(String[] args) {
+public String Register() {
 		
 		ConsoleUtils.write("+------------------------------------------------------------------+");
 		ConsoleUtils.write("|                                                                  |");
@@ -29,7 +31,9 @@ public void Register(String[] args) {
 		ConsoleUtils.write("|                                                                  |");
 		ConsoleUtils.write("|                       Please type your data                      |");
 		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("+------------------------------------------------------------------+");		
+		ConsoleUtils.write("+------------------------------------------------------------------+");	
+		
+		return "";
 		
 	}
 	
