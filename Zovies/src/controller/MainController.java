@@ -2,7 +2,7 @@ package controller;
 
 import menus.WelcomePageMenu;
 import repositories.UserRepository;
-import menus.ErrorMenus;
+import menus.*;
 
 import utils.ConsoleUtils;
 import services.AuthenticationService;
@@ -11,6 +11,8 @@ import java.util.*;
 public class MainController {
 	
 	private AuthenticationController authController = new AuthenticationController();
+	
+	private AccountMenus accMenus = new AccountMenus();
 	private RegisterController register = new RegisterController();
 	private WelcomePageMenu welcomeMenu = new WelcomePageMenu();
 	private ErrorMenus errorMenu = new ErrorMenus();
@@ -40,6 +42,9 @@ public class MainController {
 		}
 		
 		if(Integer.parseInt(optionForAccount) == 1) {
+			
+			ConsoleUtils.write(accMenus.Login());
+			
 			authController.run();
 			
 			if (authService.getLoggedUser() != null) {
@@ -54,6 +59,9 @@ public class MainController {
 		        }  
 	        }
 		} else if(Integer.parseInt(optionForAccount) == 2) {
+			
+			ConsoleUtils.write(accMenus.Register());
+			
 			register.run();
 		}
 	}

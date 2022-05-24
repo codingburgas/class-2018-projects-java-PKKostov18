@@ -16,8 +16,6 @@ public class AccountMenus {
 		ConsoleUtils.write("|                                                                  |");
 		ConsoleUtils.write("+------------------------------------------------------------------+");	
 		
-		System.out.print("Please choose: ");
-		
 		return "";
 		
 	}
@@ -27,16 +25,14 @@ public String Register() {
 		
 		ConsoleUtils.write("+------------------------------------------------------------------+");
 		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("|                            Register                              |");
+		ConsoleUtils.write("|                         Create an account                        |");
 		ConsoleUtils.write("|                                                                  |");
 		ConsoleUtils.write("+------------------------------------------------------------------+");
 		ConsoleUtils.write("|                                                                  |");
 		ConsoleUtils.write("|                       Please type your data                      |");
 		ConsoleUtils.write("|                                                                  |");
 		ConsoleUtils.write("+------------------------------------------------------------------+");	
-		
-		System.out.print("Please choose: ");
-		
+				
 		return "";
 		
 	}
