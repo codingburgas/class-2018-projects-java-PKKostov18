@@ -11,13 +11,10 @@ import java.util.*;
 public class MainController {
 	
 	private AuthenticationController authController = new AuthenticationController();
-	
 	private AccountMenus accMenus = new AccountMenus();
-	private RegisterController register = new RegisterController();
+	private RegisterController registerController = new RegisterController();
 	private WelcomePageMenu welcomeMenu = new WelcomePageMenu();
 	private ErrorMenus errorMenu = new ErrorMenus();
-	
-	private UserRepository repo = new UserRepository();
 	
 	private AuthenticationService authService;
 	
@@ -61,8 +58,7 @@ public class MainController {
 		} else if(Integer.parseInt(optionForAccount) == 2) {
 			
 			ConsoleUtils.write(accMenus.Register());
-			
-			register.run();
+			registerController.run();
 		}
 	}
 }

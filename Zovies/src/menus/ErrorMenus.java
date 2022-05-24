@@ -13,7 +13,6 @@ public class ErrorMenus {
 		System.out.print("Please choose: ");
 		
 		return "";
-		
 	}
 	
 	public String UnvalidDataError() {
@@ -23,7 +22,5 @@ public class ErrorMenus {
 			ConsoleUtils.write("+------------------------------------------------------------------+");
 			
 			return "";
-			
 	}
-
 }

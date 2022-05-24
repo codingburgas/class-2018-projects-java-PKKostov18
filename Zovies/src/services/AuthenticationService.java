@@ -10,7 +10,7 @@ public class AuthenticationService {
 	private final UserService userService;
     private static AuthenticationService instance = null;
 
-    public static AuthenticationService getInstance() {
+    public static AuthenticationService getInstance(){
 
         if (AuthenticationService.instance == null) {
             AuthenticationService.instance = new AuthenticationService();
@@ -19,7 +19,7 @@ public class AuthenticationService {
         return AuthenticationService.instance;
     }
 
-    public AuthenticationService() {
+    public AuthenticationService(){
 		this.userService = UserService.getInstance();
     }
 
@@ -29,7 +29,7 @@ public class AuthenticationService {
         return authenticatedUser;
     }
 
-    public void authenticateUser(String username, String password) {
+    public void authenticateUser(String username, String password){
         this.authenticatedUser = userService.getRegisteredUser(username, password);
     }
 
@@ -39,7 +39,7 @@ public class AuthenticationService {
         return isAdmin;
     }
     
-    public void getAdmin(String username, String password) {
-        this.isAdmin = userService.getAdminUser(username, password);
+    public void getAdmin(String username) {
+        this.isAdmin = userService.getAdminUser(username);
     }
 }

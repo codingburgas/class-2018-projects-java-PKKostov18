@@ -1,18 +1,19 @@
 package controller;
 
-import menus.AccountMenus;
 import utils.ConsoleUtils;
-import repositories.*;
 import services.RegisterService;
+import menus.ErrorMenus;
 
 public class RegisterController {
 	
-
-	public void run() {
-		
-		UserRepository logic = new UserRepository();
-			
-		int admin = 0;
+	private ErrorMenus errMenu = new ErrorMenus();
+	private final RegisterService regService;
+	
+	public RegisterController() {
+        this.regService = RegisterService.getInstance();
+    }
+	
+	public void run(){
 		
 		ConsoleUtils.write("FIRST NAME: ");
         String firstName = ConsoleUtils.read();
@@ -29,12 +30,7 @@ public class RegisterController {
         ConsoleUtils.write("PASSWORD: ");
         String password = ConsoleUtils.read();
         
-        ConsoleUtils.write("SALT: ");
-        String salt = ConsoleUtils.read();
+        regService.insertUser(firstName, lastName, email, username, password);
         
-        logic.insertUser(firstName, lastName, email, username, username, salt, admin);
-        
-		
 	}
-
 }

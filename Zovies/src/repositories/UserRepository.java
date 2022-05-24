@@ -1,9 +1,10 @@
 package repositories;
 
 import models.User;
-import services.AuthenticationService;
 import utils.ApplicationProperties;
+import utils.PasswordManager;
 
+import java.security.Key;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -45,18 +46,17 @@ public class UserRepository {
 
 	public List<User> getRegisteredUser(String username, String password) {
 		List<User> listOfUsers = new ArrayList<>();
-		String query = "SELECT * FROM users WHERE Username = ? AND Password = ?;";
+		String query = "SELECT * FROM users WHERE Username = ?";
 		try (Connection conn = DriverManager.getConnection(ApplicationProperties.JDBC_URL);
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			
 			ps.setString(1, username);
-			ps.setString(2, password);
 			
 			ResultSet resultSet = ps.executeQuery();
 			
 			while (resultSet.next()) {
 				User user = mapToUser(resultSet);
-				listOfUsers.add(user);	
+				listOfUsers.add(user);
 			}
 
 		} catch (SQLException e) {
@@ -65,13 +65,12 @@ public class UserRepository {
 		return listOfUsers;
 	}
 	
-	public boolean getAdminUser(String username, String password) {
-		String query = "SELECT * FROM users WHERE Username = ? AND Password = ?;";
+	public boolean getAdminUser(String username) {
+		String query = "SELECT * FROM users WHERE Username = ?";
 		try (Connection conn = DriverManager.getConnection(ApplicationProperties.JDBC_URL);
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			
 			ps.setString(1, username);
-			ps.setString(2, password);
 			
 			ResultSet resultSet = ps.executeQuery();
 			
@@ -104,10 +103,32 @@ public class UserRepository {
 			
 			int rs = pst.executeUpdate();
 			
-			System.out.println(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	public boolean checkHashPassword(String username, String password) {
+		String query1 = "SELECT * FROM users WHERE Username = ?";
+		try (Connection conn = DriverManager.getConnection(ApplicationProperties.JDBC_URL);
+				PreparedStatement ps = conn.prepareStatement(query1)) {
+			
+			ps.setString(1, username);
+			
+			ResultSet resultSet = ps.executeQuery();
+			
+			while (resultSet.next()) {
+				if(PasswordManager.isExpectedPassword(password.toCharArray(), resultSet.getString("Salt"), resultSet.getString("Password").toCharArray()) == false) {
+					return false;
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return true;
 	}
 
 	private User mapToUser(ResultSet resultSet) throws SQLException {
