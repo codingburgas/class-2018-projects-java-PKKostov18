@@ -23,4 +23,14 @@ public class ErrorMenus {
 			
 			return "";
 	}
+	
+	public String UnvalidDomain() {
+		
+			ConsoleUtils.write("+------------------------------------------------------------------+");
+			ConsoleUtils.write("|                       Invalid email domain                       |");
+			ConsoleUtils.write("+------------------------------------------------------------------+");
+		
+		return "";
+}
+
 }
