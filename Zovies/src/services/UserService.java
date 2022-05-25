@@ -36,12 +36,14 @@ public class UserService {
 	public User getRegisteredUser(String username, String password) {
 				
 		User user = usersRepository.getRegisteredUser(username);
-
-		boolean hashPassword = PasswordManager.isExpectedPassword(password.toCharArray(), user.getSalt(), user.getPassword().toCharArray());
+		
+		if(user != null) {
+			boolean hashPassword = PasswordManager.isExpectedPassword(password.toCharArray(), user.getSalt(), user.getPassword().toCharArray());
 			
-		if(hashPassword == false) {
-			return null;
-		} 
+			if(hashPassword == false) {
+				return null;
+			} 
+		}
 		
 		return user;
 	}
