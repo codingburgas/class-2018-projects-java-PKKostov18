@@ -37,4 +37,12 @@ public class ErrorMenu {
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	
 	}
+
+	public static void invalidEmailUsername() {
+		
+			ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+			ConsoleUtils.writeLine("|                      Invalid email username                      |");
+			ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	
+	}
 }
