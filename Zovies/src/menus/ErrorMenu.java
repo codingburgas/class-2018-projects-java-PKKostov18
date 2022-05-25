@@ -29,4 +29,12 @@ public class ErrorMenu {
 			ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		
 	}
+	
+	public static void invalidUsername() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                      Username already exist                      |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	
+	}
 }

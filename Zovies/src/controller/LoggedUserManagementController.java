@@ -7,6 +7,8 @@ public class LoggedUserManagementController {
 
 	public void run() {
 		LoggedUserMenu.loggedUser();
+		
+		
 	}
 }
 

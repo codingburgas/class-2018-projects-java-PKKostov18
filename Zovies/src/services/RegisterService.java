@@ -7,6 +7,7 @@ public class RegisterService {
 	
 	private final UserRepository usersRepository;
 	private static RegisterService instance = null;
+	private boolean correctUser;
 	
 	public static RegisterService getInstance() {
 
@@ -20,12 +21,16 @@ public class RegisterService {
 	private RegisterService() {
         this.usersRepository = UserRepository.getInstance();
     }
+	
+	public boolean getCorrectUser() {
+        return correctUser;
+    }
 
 	public void insertUser(String firstName, String lastName, String email, String username, String password) {
 		
 		String salt = PasswordManager.getNextSalt();
 		password = PasswordManager.hash(password.toCharArray(), salt);
 		
-		usersRepository.insertUser(firstName, lastName, email, username, password, salt, false);
+		correctUser = usersRepository.insertUser(firstName, lastName, email, username, password, salt, false);
 	}
 }

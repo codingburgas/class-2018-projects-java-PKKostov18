@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository {
-
+	
 	private static UserRepository instance = null;
 
 	public static UserRepository getInstance() {
@@ -59,25 +59,37 @@ public class UserRepository {
 		return user;
 	}
 
-	public void insertUser(String firstName, String lastName, String email, String username, String password,
+	public boolean insertUser(String firstName, String lastName, String email, String username, String password,
 			String salt, boolean admin) {
 		String query1 = "INSERT INTO users (FirstName, LastName, Email, Username, Password, Salt, Admin) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String query2 = "SELECT * FROM users WHERE Username = ?";
 		try (Connection conn = DBConnection.getConnection(); 
-				PreparedStatement pst = conn.prepareStatement(query1)) {
+				PreparedStatement pst1 = conn.prepareStatement(query1);
+				PreparedStatement pst2 = conn.prepareStatement(query2)) {
 			
-			pst.setString(1, firstName);
-			pst.setString(2, lastName);
-			pst.setString(3, email);
-			pst.setString(4, username);
-			pst.setString(5, password);
-			pst.setString(6, salt);
-			pst.setBoolean(7, admin);
+			pst2.setString(1, username);
 			
-			int rs = pst.executeUpdate();
+			ResultSet resultSet = pst2.executeQuery();
+					
+			if(resultSet.next() == true) {
+				return false;
+			}
+			else {
+				pst1.setString(1, firstName);
+				pst1.setString(2, lastName);
+				pst1.setString(3, email);
+				pst1.setString(4, username);
+				pst1.setString(5, password);
+				pst1.setString(6, salt);
+				pst1.setBoolean(7, admin);
 				
+				int rs = pst1.executeUpdate();
+				return true;
+			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return true;
 	}
 	
 	private User mapToUser(ResultSet resultSet) throws SQLException {
