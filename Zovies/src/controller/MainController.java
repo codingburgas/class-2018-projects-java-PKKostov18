@@ -11,10 +11,7 @@ import java.util.*;
 public class MainController {
 	
 	private AuthenticationController authController = new AuthenticationController();
-	private AccountMenus accMenus = new AccountMenus();
 	private RegisterController registerController = new RegisterController();
-	private WelcomePageMenu welcomeMenu = new WelcomePageMenu();
-	private ErrorMenus errorMenu = new ErrorMenus();
 	
 	private AuthenticationService authService;
 	
@@ -24,40 +21,34 @@ public class MainController {
 
 	public void run() {
 
-		String optionForAccount;
+		int optionForAccount;
 		
-		ConsoleUtils.write(welcomeMenu.WelcomePage());
+		WelcomePageMenu.welcomePage();
 		
-		optionForAccount = ConsoleUtils.read();
+		optionForAccount = ConsoleUtils.readInteger();
 		
-		while(Integer.parseInt(optionForAccount)!=1 && Integer.parseInt(optionForAccount)!=2)
-		{
-			
-			ConsoleUtils.write(errorMenu.UnvalidInputError());
-			
-			optionForAccount=ConsoleUtils.read();
+		while(optionForAccount != 1 && optionForAccount != 2) {
+			ErrorMenu.invalidInputError();
+			optionForAccount = ConsoleUtils.readInteger();
 		}
 		
-		if(Integer.parseInt(optionForAccount) == 1) {
+		if(optionForAccount == 1) {
 			
-			ConsoleUtils.write(accMenus.Login());
-			
+			AccountMenu.login();
 			authController.run();
 			
-			if (authService.getLoggedUser() != null) {
+            if (authService.getLoggedUser().getAdmin()) {
 
-	            if (authService.isAdmin() == true) {
-
-	                AdministrationController administrationController = new AdministrationController();
-	                administrationController.run();
-		        } else {
-		            LoggedUserManagementController loggedUserController = new LoggedUserManagementController();
-		            loggedUserController.run();
-		        }  
-	        }
-		} else if(Integer.parseInt(optionForAccount) == 2) {
+                AdministrationController administrationController = new AdministrationController();
+                administrationController.run();
+	        } else {
+	            LoggedUserManagementController loggedUserController = new LoggedUserManagementController();
+	            loggedUserController.run();
+	        }  
+	        
+		} else if(optionForAccount == 2) {
 			
-			ConsoleUtils.write(accMenus.Register());
+			AccountMenu.register();
 			registerController.run();
 		}
 	}

@@ -10,12 +10,12 @@ public class User {
     private String email;
     private String password;
     private String salt;
-    private int admin;
+    private boolean admin;
     
     //Constructor
    
     public User(int userId, String firstName, String lastName, String username, String email, String password, String salt,
-			int admin) {
+			boolean admin) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -37,11 +37,11 @@ public class User {
 		this.salt = salt;
 	}
 	
-    public int getAdmin() {
+    public boolean getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(int admin) {
+	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
 	
@@ -95,10 +95,6 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(userId, user.userId);
-    }
-
-	public int hashPassword() {
-        return Objects.hash(password);
     }
 
     @Override

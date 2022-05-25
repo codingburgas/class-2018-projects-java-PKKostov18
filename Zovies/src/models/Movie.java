@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Movies {
+public class Movie {
     private Long projectId;
     private String name;
     private String description;
     private List<User> members;
 
-    public Movies(Long projectId, String name, String description) {
+    public Movie(Long projectId, String name, String description) {
         this.projectId = projectId;
         this.name = name;
         this.description = description;
@@ -53,7 +53,7 @@ public class Movies {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Movies project = (Movies) o;
+        Movie project = (Movie) o;
         return Objects.equals(projectId, project.projectId);
     }
 

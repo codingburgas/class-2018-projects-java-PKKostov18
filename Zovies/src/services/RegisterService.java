@@ -26,6 +26,6 @@ public class RegisterService {
 		String salt = PasswordManager.getNextSalt();
 		password = PasswordManager.hash(password.toCharArray(), salt);
 		
-		usersRepository.insertUser(firstName, lastName, email, username, password, salt, 0);
+		usersRepository.insertUser(firstName, lastName, email, username, password, salt, false);
 	}
 }

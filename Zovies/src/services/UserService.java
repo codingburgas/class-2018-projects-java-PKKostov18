@@ -1,67 +1,48 @@
 package services;
 
-import java.util.List;
 import models.User;
 import repositories.UserRepository;
 import utils.PasswordManager;
 
 public class UserService {
 	
+	private static UserService instance = null;
 	private final UserRepository usersRepository;
-    private static UserService instance = null;
+	
+    private UserService() {
+        this.usersRepository = UserRepository.getInstance();
+    }
     
 	public static UserService getInstance(){
 
         if (UserService.instance == null) {
         	UserService.instance = new UserService();
-        	createInitialUser();
+        	//User user = createInitialUser();
+        	//usersRepository.save(user);
 		}
 
         return UserService.instance;
     }
 
-    private UserService() {
-        this.usersRepository = UserRepository.getInstance();
+    private static User createInitialUser(){
+        String adminpass = "adminpass"; 
+        String salt = PasswordManager.getNextSalt();
+        User user = new User(999, "Administrator", "Administrator", "admin", "admin@codingburgas.bg", 
+        		PasswordManager.hash(adminpass.toCharArray(), salt), salt, true);
+
+        return user;
     }
     
-    private static void createInitialUser(){
-        String adminpass = "adminpass"; 
-        User user = new User(999, "Administrator", "Administrator", "admin", "PKKostov18@codingburgas.bg", 
-        		"adminpass", PasswordManager.getNextSalt(), 1);
-        user.setUsername("admin");
-        user.setUsername("admin");
-        user.setFirstName("Administrator");
-        user.setLastName("Administrator");
-        user.setEmail("PKKostov18@codingburgas.bg");
-        user.setAdmin(1);
-        user.setPassword(PasswordManager.hash(adminpass.toCharArray(), user.getSalt()));
-        
-        //usersRepository.saveUser(user);
-    }
-
-	public List<User> getRegisteredUser(String username, String password){
+	public User getRegisteredUser(String username, String password) {
 				
-		List<User> users = usersRepository.getRegisteredUser(username, password);
-		boolean hashPassword = usersRepository.checkHashPassword(username, password);
-		
+		User user = usersRepository.getRegisteredUser(username);
+
+		boolean hashPassword = PasswordManager.isExpectedPassword(password.toCharArray(), user.getSalt(), user.getPassword().toCharArray());
+			
 		if(hashPassword == false) {
-			return null;
-		}
-		
-		if(users.isEmpty()) {
 			return null;
 		} 
 		
-		return users;
-	}
-
-	public boolean getAdminUser(String username) {
-		
-		boolean adminUser = usersRepository.getAdminUser(username);
-		
-		if(adminUser == false) {
-			return false;
-		}
-		return true;
+		return user;
 	}
 }

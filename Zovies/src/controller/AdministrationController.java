@@ -5,13 +5,7 @@ import utils.ConsoleUtils;
 
 public class AdministrationController {
 	
-	AdminMenu adminMenu = new AdminMenu();
-	
-
-	public void run() {
-		
-		ConsoleUtils.write(adminMenu.adminMenu());
-		
+	public void run() {		
+		AdminMenu.adminMenu();
 	}
-
 }

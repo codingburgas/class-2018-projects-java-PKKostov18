@@ -7,10 +7,16 @@ import repositories.UserRepository;
 
 public class AuthenticationService {
 	
+	private static AuthenticationService instance = null;
 	private final UserService userService;
-    private static AuthenticationService instance = null;
-
-    public static AuthenticationService getInstance(){
+    
+	private User authenticatedUser = null;
+	
+	private AuthenticationService() {
+		this.userService = UserService.getInstance();
+    }
+	
+    public static AuthenticationService getInstance() {
 
         if (AuthenticationService.instance == null) {
             AuthenticationService.instance = new AuthenticationService();
@@ -19,27 +25,11 @@ public class AuthenticationService {
         return AuthenticationService.instance;
     }
 
-    public AuthenticationService(){
-		this.userService = UserService.getInstance();
-    }
-
-    private List<User> authenticatedUser = null;
-
-    public List<User> getLoggedUser() {
+    public User getLoggedUser() {
         return authenticatedUser;
     }
 
-    public void authenticateUser(String username, String password){
+    public void authenticateUser(String username, String password) {
         this.authenticatedUser = userService.getRegisteredUser(username, password);
-    }
-
-    private boolean isAdmin;
-    
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-    
-    public void getAdmin(String username) {
-        this.isAdmin = userService.getAdminUser(username);
     }
 }

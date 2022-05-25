@@ -4,36 +4,32 @@ import utils.ConsoleUtils;
 
 public class LoggedUserMenu {
 
-	public String LoggedUser() {
-		ConsoleUtils.write("+------------------------------------------------------------------+");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("|                             ZOVIES                               |");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("+------------------------------------------------------------------+");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("|                      Please choose a option                      |");
-		ConsoleUtils.write("|        __________________________________________________        |");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("|                       1. View all movies                         |");
-		ConsoleUtils.write("|                       2. View all series                         |");
-		ConsoleUtils.write("|                       3. View favourites                         |");
-		ConsoleUtils.write("|                       4. View by genre                           |");
-		ConsoleUtils.write("|                       5. View by actor                           |");
-		ConsoleUtils.write("|                       6. View top 50 actors                      |");
-		ConsoleUtils.write("|        __________________________________________________        |");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("|                             ACCOUNT                              |");
-		ConsoleUtils.write("|              ______________________________________              |");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("|                       7. Edit account                            |");
-		ConsoleUtils.write("|                       8. DELETE account                          |");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("+------------------------------------------------------------------+");
+	public static void loggedUser() {
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("|                             ZOVIES                               |");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("|                      Please choose a option                      |");
+		ConsoleUtils.writeLine("|        __________________________________________________        |");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("|                       1. View all movies                         |");
+		ConsoleUtils.writeLine("|                       2. View all series                         |");
+		ConsoleUtils.writeLine("|                       3. View favourites                         |");
+		ConsoleUtils.writeLine("|                       4. View by genre                           |");
+		ConsoleUtils.writeLine("|                       5. View by actor                           |");
+		ConsoleUtils.writeLine("|                       6. View top 50 actors                      |");
+		ConsoleUtils.writeLine("|        __________________________________________________        |");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("|                             ACCOUNT                              |");
+		ConsoleUtils.writeLine("|              ______________________________________              |");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("|                       7. Edit account                            |");
+		ConsoleUtils.writeLine("|                       8. DELETE account                          |");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		
-		System.out.print("Please choose: ");
-		
-		return "";
-		
+		ConsoleUtils.write("Please choose: ");
 	}
-
 }

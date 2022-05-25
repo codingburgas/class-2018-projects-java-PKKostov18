@@ -1,12 +1,10 @@
 package controller;
 
-import menus.ErrorMenus;
+import menus.ErrorMenu;
 import services.AuthenticationService;
 import utils.ConsoleUtils;
 
 public class AuthenticationController {
-	
-	private ErrorMenus errorMenu = new ErrorMenus();
 	
 	private final AuthenticationService authService;
 	private static AuthenticationController instance = null;
@@ -28,17 +26,16 @@ public class AuthenticationController {
     
         while (authService.getLoggedUser() == null) { 
 
-        	ConsoleUtils.write("USERNAME: ");
+        	ConsoleUtils.writeLine("USERNAME: ");
             String username = ConsoleUtils.read();
 
-            ConsoleUtils.write("PASSWORD: ");
+            ConsoleUtils.writeLine("PASSWORD: ");
             String password = ConsoleUtils.read();
  
             authService.authenticateUser(username, password);
-            authService.getAdmin(username);
             
             if(authService.getLoggedUser() == null) {
-            	ConsoleUtils.write(errorMenu.UnvalidDataError());
+            	ErrorMenu.invalidDataError();
             }
         }
     }

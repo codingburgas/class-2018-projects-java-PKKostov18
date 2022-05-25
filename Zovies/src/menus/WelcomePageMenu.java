@@ -4,25 +4,21 @@ import utils.ConsoleUtils;
 
 public class WelcomePageMenu {
 
-	public String WelcomePage() {
-		ConsoleUtils.write("+------------------------------------------------------------------+");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("|                        WELCOME TO ZOVIES                         |");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("+------------------------------------------------------------------+");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("|                      DO YOU HAVE AN ACCOUNT?                     |");
-		ConsoleUtils.write("|        __________________________________________________        |");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("|                             1. Yes                               |");
-		ConsoleUtils.write("|                             2. No                                |");
-		ConsoleUtils.write("|                                                                  |");
-		ConsoleUtils.write("+------------------------------------------------------------------+");
+	public static void welcomePage() {
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("|                        WELCOME TO ZOVIES                         |");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("|                      DO YOU HAVE AN ACCOUNT?                     |");
+		ConsoleUtils.writeLine("|        __________________________________________________        |");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("|                             1. Yes                               |");
+		ConsoleUtils.writeLine("|                             2. No                                |");
+		ConsoleUtils.writeLine("|                                                                  |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		
-		System.out.print("Please choose: ");
-		
-		return "";
-		
+		ConsoleUtils.write("Please choose: ");
 	}
-
 }
