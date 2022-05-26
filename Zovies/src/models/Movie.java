@@ -1,74 +1,114 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Movie {
-    private Long projectId;
-    private String name;
+	
+    private int movieId;
+    private String movieName;
+    private String movieOrSeries;
+    private int yearOfPublishing;
     private String description;
-    private List<User> members;
+    private String company;
+    private int duration;
+    private double IMDB_score;
 
-    public Movie(Long projectId, String name, String description) {
-        this.projectId = projectId;
-        this.name = name;
-        this.description = description;
-        this.members = new ArrayList<>();
-    }
+    public Movie(int movieId, String movieName, String movieOrSeries, int yearOfPublishing, String description,
+			String company, int duration, double IMDB_score) {
+		super();
+		this.movieId = movieId;
+		this.movieName = movieName;
+		this.movieOrSeries = movieOrSeries;
+		this.yearOfPublishing = yearOfPublishing;
+		this.description = description;
+		this.company = company;
+		this.duration = duration;
+		this.IMDB_score = IMDB_score;
+	}
+    
+	public int getMovieId() {
+		return movieId;
+	}
+	
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
 
-    public Long getProjectId() {
-        return projectId;
-    }
+	public String getMovieName() {
+		return movieName;
+	}
 
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
-    }
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getMovieOrSeries() {
+		return movieOrSeries;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setMovieOrSeries(String movieOrSeries) {
+		this.movieOrSeries = movieOrSeries;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public int getYearOfPublishing() {
+		return yearOfPublishing;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setYearOfPublishing(int yearOfPublishing) {
+		this.yearOfPublishing = yearOfPublishing;
+	}
 
-    public List<User> getMembers() {
-        return members;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setMembers(List<User> members) {
-        this.members = members;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    @Override
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public double getIMDB_score() {
+		return IMDB_score;
+	}
+
+	public void setIMDB_score(double iMDB_score) {
+		IMDB_score = iMDB_score;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Movie project = (Movie) o;
-        return Objects.equals(projectId, project.projectId);
+        Movie movie = (Movie) o;
+        return Objects.equals(movieId, movie.movieId);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(projectId);
-    }
-
+	
     @Override
     public String toString() {
-        return "Project{" +
-                "projectId=" + projectId +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", members=" + members +
+        return "Movie{" +
+                " movieId = " + movieId + 
+                ", movieName = " + movieName + '\'' +
+                ", movieOrSeries = " + movieOrSeries + '\'' +
+                ", yearOfPublishing = " + yearOfPublishing + '\'' +
+                ", description = " + description + '\'' +
+                ", company = " + company + '\'' +
+                ", duration = " + duration + '\'' +
+                ", IMDB_score = " + IMDB_score +
                 '}';
     }
 }
