@@ -17,20 +17,9 @@ public class UserService {
 
         if (UserService.instance == null) {
         	UserService.instance = new UserService();
-        	//User user = createInitialUser();
-        	//usersRepository.save(user);
 		}
 
         return UserService.instance;
-    }
-
-    private static User createInitialUser(){
-        String adminpass = "adminpass"; 
-        String salt = PasswordManager.getNextSalt();
-        User user = new User(999, "Administrator", "Administrator", "admin", "admin@codingburgas.bg", 
-        		PasswordManager.hash(adminpass.toCharArray(), salt), salt, true);
-
-        return user;
     }
     
 	public User getRegisteredUser(String username, String password) {

@@ -1,30 +1,73 @@
 package controller;
-import repositories.*;
-import utils.*;
+
 import menus.*;
-import models.Movie;
 import utils.ConsoleUtils;
-import services.AuthenticationService;
-import services.UserService;
+import services.MovieService;
 
-import java.util.*;
+public class ViewAllMoviesController{
+	
+	//private LoggedUserManagementController loggedUserManagementController = new LoggedUserManagementController();
+	
+	private static ViewAllMoviesController instance = null;
+	private final MovieService movieService;
+	
+	public ViewAllMoviesController() {
+		this.movieService = MovieService.getInstance();
+    }
+	
+	public static ViewAllMoviesController getInstance(){
 
-public class ViewAllMoviesController {
+        if (ViewAllMoviesController.instance == null) {
+        	ViewAllMoviesController.instance = new ViewAllMoviesController();
+		}
+
+        return ViewAllMoviesController.instance;
+    }
 	
-	
-	private static final MovieRepository select = new MovieRepository();
-	
-	public static void ViewAllMoviesController() {
+	public void viewAllMovies() {
 		
-	ListMenu.AllMoviesMenu();
-	
-	List<Movie> movies = select.getAllMovies();
-	
-	movies.stream().forEach(movie->System.out.println(movie.getMovieName()));
-	
+		ListMenu.AllMoviesMenu();
+		
+		System.out.println();
+		
+		movieService.displayAllMovieNames();
+		
+		ConsoleUtils.write("Please type the name of the movie you want more info about: ");
+		String movieName = ConsoleUtils.read();
+		movieService.displayMovieByMovieName(movieName);
 
-	ConsoleUtils.write("Please type the name of the movie you want more info about: ");
-
+		while(movieService.isMovieNameValid() == null) {
+			
+			System.out.println();
+			
+			ErrorMenu.invalidMovieName();
+			
+			ConsoleUtils.write("Please type the name of the movie you want more info about: ");
+			movieName = ConsoleUtils.read();
+			
+			movieService.displayMovieByMovieName(movieName);
+		}
+		
+		ConsoleUtils.writeLine("Do you want to see another movie info or you want to go back: "); 
+		ConsoleUtils.writeLine("1 for see another movie info");
+		ConsoleUtils.writeLine("2 for back"); 
+		ConsoleUtils.write("Choose: "); int option = ConsoleUtils.readInteger();
+		System.out.println();
+		
+		while(option != 1) {
+			ErrorMenu.invalidDataError();
+			ConsoleUtils.writeLine("Do you want to see another movie info or you want to go back: "); 
+			ConsoleUtils.writeLine("1 for see another movie info");
+			ConsoleUtils.writeLine("2 for back"); 
+			ConsoleUtils.write("Choose: "); option = ConsoleUtils.readInteger();
+			System.out.println();
+		}
+		
+		if(option == 1) {
+			viewAllMovies();
+		} 
+		else if(option == 2) {
+			//loggedUserManagementController.run();
+		}	
 	}
-	
 }

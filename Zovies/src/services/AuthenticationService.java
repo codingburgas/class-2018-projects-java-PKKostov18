@@ -1,9 +1,6 @@
 package services;
 
-import java.util.List;
-
 import models.User;
-import repositories.UserRepository;
 
 public class AuthenticationService {
 	

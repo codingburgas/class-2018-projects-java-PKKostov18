@@ -42,6 +42,30 @@ public class MovieRepository {
 		return listOfMovies;
 	}
 	
+	public Movie getMovieByMovieName(String movieName) {
+		Movie movie = null;
+		String query = "SELECT * FROM movies WHERE MovieName = ?";
+		try (Connection conn = DBConnection.getConnection();
+				PreparedStatement ps = getPSWithMovieName(conn, query, movieName);
+				ResultSet resultSet = ps.executeQuery()) {
+
+			if(resultSet == null) {
+				return null;
+			}
+			else {
+				while (resultSet.next()) {
+					movie = mapToMovie(resultSet);
+				}
+				return movie;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return movie;
+	}
+	
 	private Movie mapToMovie(ResultSet resultSet) throws SQLException {
 		int movieId = resultSet.getInt("MovieId");
 		String movieName = resultSet.getString("MovieName");
@@ -55,5 +79,11 @@ public class MovieRepository {
 		Movie movie = new Movie(movieId, movieName, movieOrSeries, 
 				yearOfPublishing, description, company, duration, IMDB_score);
 		return movie;
+	}
+	
+	private PreparedStatement getPSWithMovieName(Connection conn, String query, String movieName) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(query);
+		ps.setString(1, movieName);
+		return ps;
 	}
 }

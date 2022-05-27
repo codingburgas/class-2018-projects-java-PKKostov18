@@ -11,15 +11,13 @@ public class ErrorMenu {
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		
 		ConsoleUtils.write("Please choose: ");
-		
 	}
 	
 	public static void invalidDataError() {
 			
 			ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 			ConsoleUtils.writeLine("|                     Please enter a valid data!                   |");
-			ConsoleUtils.writeLine("+------------------------------------------------------------------+");
-			
+			ConsoleUtils.writeLine("+------------------------------------------------------------------+");	
 	}
 	
 	public static void invalidDomain() {
@@ -27,7 +25,6 @@ public class ErrorMenu {
 			ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 			ConsoleUtils.writeLine("|                       Invalid email domain                       |");
 			ConsoleUtils.writeLine("+------------------------------------------------------------------+");
-		
 	}
 	
 	public static void invalidUsername() {
@@ -35,7 +32,6 @@ public class ErrorMenu {
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		ConsoleUtils.writeLine("|                      Username already exist                      |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
-	
 	}
 
 	public static void invalidEmailUsername() {
@@ -43,6 +39,12 @@ public class ErrorMenu {
 			ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 			ConsoleUtils.writeLine("|                      Invalid email username                      |");
 			ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
 	
+	public static void invalidMovieName() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                        Invalid movie name                        |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 }

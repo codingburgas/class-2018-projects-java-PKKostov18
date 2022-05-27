@@ -1,12 +1,11 @@
 package controller;
 
-import menus.*;
+import menus.LoggedUserMenu;
 import utils.ConsoleUtils;
-import controller.*;
 
 public class LoggedUserManagementController {
 
-	
+	private ViewAllMoviesController viewAllMoviesController = new ViewAllMoviesController();
 	int choice;
 	
 	public void run() {
@@ -14,9 +13,8 @@ public class LoggedUserManagementController {
 		
 		choice = ConsoleUtils.readInteger();
 		
-		
 		if(choice == 1) {
-		ViewAllMoviesController.ViewAllMoviesController();
+			viewAllMoviesController.viewAllMovies();
 		}
 	}
 }
