@@ -10,8 +10,6 @@ public class RegisterController {
 	
 	private final RegisterService regService;
 	
-	int option;
-	
 	public RegisterController() {
         this.regService = RegisterService.getInstance();
     }
@@ -19,6 +17,7 @@ public class RegisterController {
 	public void run(){
 		
 		while(regService.getCorrectUser() == false) {
+			
 			ConsoleUtils.writeLine("FIRST NAME: ");
 	        String firstName = ConsoleUtils.read();
 	
@@ -53,6 +52,23 @@ public class RegisterController {
 	        }
 		}
 		
-		loggedUserController.run();
+		ConsoleUtils.writeLine("Successful registration!");
+		ConsoleUtils.write("Type 1 to back: "); int option = ConsoleUtils.readInteger();
+		
+		while(true) {
+			switch (option) {
+				case 1: {
+					backToMainMenu();
+					break;
+				}
+				default:
+					ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+			}
+		}
 	}
+	
+	private void backToMainMenu() {
+		MainController mainMenu = new MainController();
+		mainMenu.run();
+    }
 }

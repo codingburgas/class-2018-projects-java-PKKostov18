@@ -1,12 +1,10 @@
 package controller;
 
 import menus.WelcomePageMenu;
-import repositories.UserRepository;
 import menus.*;
 
 import utils.ConsoleUtils;
 import services.AuthenticationService;
-import java.util.*;
 
 public class MainController {
 	

@@ -27,6 +27,7 @@ public class LoggedUserMenu {
 		ConsoleUtils.writeLine("|                                                                  |");
 		ConsoleUtils.writeLine("|                       7. Edit account                            |");
 		ConsoleUtils.writeLine("|                       8. DELETE account                          |");
+		ConsoleUtils.writeLine("|                       9. Log out                                 |");
 		ConsoleUtils.writeLine("|                                                                  |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		

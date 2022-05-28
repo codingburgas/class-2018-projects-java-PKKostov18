@@ -25,7 +25,7 @@ public class MovieRepository {
 	
 	public List<Movie> getAllMovies() {
 		List<Movie> listOfMovies = new ArrayList<>();
-		String query = "SELECT * FROM movies;";
+		String query = "SELECT * FROM movies WHERE MovieOrSeries = 'Movie'";
 		try (Connection conn = DBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query);
 				ResultSet resultSet = ps.executeQuery()) {
@@ -39,6 +39,25 @@ public class MovieRepository {
 			e.printStackTrace();
 		}
 
+		return listOfMovies;
+	}
+	
+	public List<Movie> getAllSeries() {
+		List<Movie> listOfMovies = new ArrayList<>();
+		String query = "SELECT * FROM movies WHERE MovieOrSeries = 'Series'";
+		try (Connection conn = DBConnection.getConnection();
+				PreparedStatement ps = conn.prepareStatement(query);
+				ResultSet resultSet = ps.executeQuery()) {
+
+			while (resultSet.next()) {
+				Movie movie = mapToMovie(resultSet);
+				listOfMovies.add(movie);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return listOfMovies;
 	}
 	

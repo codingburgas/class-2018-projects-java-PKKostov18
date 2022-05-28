@@ -1,51 +1,45 @@
 package controller;
 
 import menus.*;
+import models.Movie;
 import utils.ConsoleUtils;
 import services.MovieService;
 
 public class ViewAllMoviesController{
 	
-	//private LoggedUserManagementController loggedUserManagementController = new LoggedUserManagementController();
-	
-	private static ViewAllMoviesController instance = null;
 	private final MovieService movieService;
+	
+	Movie movie = null;
 	
 	public ViewAllMoviesController() {
 		this.movieService = MovieService.getInstance();
-    }
-	
-	public static ViewAllMoviesController getInstance(){
-
-        if (ViewAllMoviesController.instance == null) {
-        	ViewAllMoviesController.instance = new ViewAllMoviesController();
-		}
-
-        return ViewAllMoviesController.instance;
     }
 	
 	public void viewAllMovies() {
 		
 		ListMenu.AllMoviesMenu();
 		
-		System.out.println();
-		
 		movieService.displayAllMovieNames();
 		
-		ConsoleUtils.write("Please type the name of the movie you want more info about: ");
-		String movieName = ConsoleUtils.read();
-		movieService.displayMovieByMovieName(movieName);
+		ConsoleUtils.write("Please type the name of the movie you want more info about: "); String movieName = ConsoleUtils.read();
+	    movie = movieService.displayMovieByMovieName(movieName);
+		
+		if(movie != null) {
+			displayMovieSeriesInfo(movie);
+		}
 
-		while(movieService.isMovieNameValid() == null) {
-			
-			System.out.println();
+		while(movieService.displayMovieByMovieName(movieName) == null) {
 			
 			ErrorMenu.invalidMovieName();
 			
 			ConsoleUtils.write("Please type the name of the movie you want more info about: ");
 			movieName = ConsoleUtils.read();
 			
-			movieService.displayMovieByMovieName(movieName);
+			movie = movieService.displayMovieByMovieName(movieName);
+
+			if(movie != null) {
+				displayMovieSeriesInfo(movie);
+			}
 		}
 		
 		ConsoleUtils.writeLine("Do you want to see another movie info or you want to go back: "); 
@@ -54,20 +48,85 @@ public class ViewAllMoviesController{
 		ConsoleUtils.write("Choose: "); int option = ConsoleUtils.readInteger();
 		System.out.println();
 		
-		while(option != 1) {
-			ErrorMenu.invalidDataError();
-			ConsoleUtils.writeLine("Do you want to see another movie info or you want to go back: "); 
-			ConsoleUtils.writeLine("1 for see another movie info");
-			ConsoleUtils.writeLine("2 for back"); 
-			ConsoleUtils.write("Choose: "); option = ConsoleUtils.readInteger();
-			System.out.println();
-		}
-		
-		if(option == 1) {
-			viewAllMovies();
-		} 
-		else if(option == 2) {
-			//loggedUserManagementController.run();
+		while(true) {
+			switch (option) {
+				case 1: {
+					viewAllMovies();
+					break;
+				}
+				case 2: {
+					backToUserMenu();
+					break;
+				}
+				default:
+					ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+			}	
 		}	
 	}
+	
+	public void viewAllSeries() {
+		
+		ListMenu.AllMoviesMenu();
+		
+		movieService.displayAllSeriesNames();
+		
+		ConsoleUtils.write("Please type the name of the series you want more info about: "); String seriesName = ConsoleUtils.read();
+	    movie = movieService.displayMovieByMovieName(seriesName);
+		
+		if(movie != null) {
+			displayMovieSeriesInfo(movie);
+		}
+
+		while(movieService.displayMovieByMovieName(seriesName) == null) {
+			
+			ErrorMenu.invalidMovieName();
+			
+			ConsoleUtils.write("Please type the name of the series you want more info about: ");
+			seriesName = ConsoleUtils.read();
+			
+			movie = movieService.displayMovieByMovieName(seriesName);
+
+			if(movie != null) {
+				displayMovieSeriesInfo(movie);
+			}
+		}
+		
+		ConsoleUtils.writeLine("Do you want to see another series info or you want to go back: "); 
+		ConsoleUtils.writeLine("1 for see another series info");
+		ConsoleUtils.writeLine("2 for back"); 
+		ConsoleUtils.write("Choose: "); int option = ConsoleUtils.readInteger();
+		System.out.println();
+		
+		while(true) {
+			switch (option) {
+				case 1: {
+					viewAllSeries();
+					break;
+				}
+				case 2: {
+					backToUserMenu();
+					break;
+				}
+				default:
+					ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+			}	
+		}	
+	}
+	
+	private void backToUserMenu() {
+		LoggedUserManagementController loggedUserManagementController = new LoggedUserManagementController();
+		loggedUserManagementController.run();
+    }
+	
+	private void displayMovieSeriesInfo(Movie movie) {
+		ConsoleUtils.writeNewLine();
+		ConsoleUtils.writeLine("Movie name: " + this.movie.getMovieName());
+		ConsoleUtils.writeLine("Movie or Series: " + this.movie.getMovieOrSeries());
+		ConsoleUtils.writeLine("Year of publishing: " + this.movie.getYearOfPublishing());
+		ConsoleUtils.writeLine("Description: " + this.movie.getDescription());
+		ConsoleUtils.writeLine("Company: " + this.movie.getCompany());
+		ConsoleUtils.writeLine("Duration: " + this.movie.getDuration() + " min");
+		ConsoleUtils.writeLine("IMDB_score: " + this.movie.getIMDB_score());
+		ConsoleUtils.writeNewLine();
+    }
 }

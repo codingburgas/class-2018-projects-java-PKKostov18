@@ -3,7 +3,6 @@ package services;
 import java.util.List;
 
 import models.Movie;
-import models.User;
 import repositories.MovieRepository;
 import utils.ConsoleUtils;
 
@@ -11,8 +10,6 @@ public class MovieService {
 	
 	private static MovieService instance = null;
 	private final MovieRepository movieRepository;
-	
-	private Movie movie = null;
 	
     private MovieService() {
         this.movieRepository = MovieRepository.getInstance();
@@ -31,29 +28,24 @@ public class MovieService {
 		List<Movie> movies = movieRepository.getAllMovies();
 		
 		ConsoleUtils.writeLine("Movie names:");
-		System.out.println();
+		ConsoleUtils.writeNewLine();
 		movies.stream().forEach(movie -> System.out.println(movie.getMovieName()));
-		System.out.println();
+		ConsoleUtils.writeNewLine();
 	}
 	
-	public Movie isMovieNameValid() {
-        return movie;
-    }
-	
-	public void displayMovieByMovieName(String movieName) {
+	public void displayAllSeriesNames() {
+		List<Movie> series = movieRepository.getAllSeries();
 		
-		this.movie = movieRepository.getMovieByMovieName(movieName);
+		ConsoleUtils.writeLine("Movie names:");
+		ConsoleUtils.writeNewLine();
+		series.stream().forEach(movie -> System.out.println(movie.getMovieName()));
+		ConsoleUtils.writeNewLine();
+	}
+
+	public Movie displayMovieByMovieName(String movieName) {
 		
-		if(movie != null) {
-			System.out.println();
-			ConsoleUtils.writeLine("Movie name: " + movie.getMovieName());
-			ConsoleUtils.writeLine("Movie or Series: " + movie.getMovieOrSeries());
-			ConsoleUtils.writeLine("Year of publishing: " + movie.getYearOfPublishing());
-			ConsoleUtils.writeLine("Description: " + movie.getDescription());
-			ConsoleUtils.writeLine("Company: " + movie.getCompany());
-			ConsoleUtils.writeLine("Duration: " + movie.getDuration() + " mins");
-			ConsoleUtils.writeLine("IMDB_score: " + movie.getIMDB_score());
-			System.out.println();
-		}
+		Movie movie = movieRepository.getMovieByMovieName(movieName);
+		
+		return movie;
 	}
 }

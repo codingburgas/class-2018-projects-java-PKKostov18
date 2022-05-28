@@ -15,6 +15,16 @@ public class ConsoleUtils {
         System.out.print(line);
     }
     
+    public static void writeNewLine() {    
+        System.out.println();
+    }
+    
+    public static void clear() {
+        for(int i = 0; i <= 30; i++) {
+        	System.out.println();
+        }
+    }
+    
     public static String read() {
         return scanner.nextLine();
     }
