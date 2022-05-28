@@ -120,13 +120,25 @@ public class ViewAllMoviesController{
 	
 	private void displayMovieSeriesInfo(Movie movie) {
 		ConsoleUtils.writeNewLine();
-		ConsoleUtils.writeLine("Movie name: " + this.movie.getMovieName());
-		ConsoleUtils.writeLine("Movie or Series: " + this.movie.getMovieOrSeries());
-		ConsoleUtils.writeLine("Year of publishing: " + this.movie.getYearOfPublishing());
-		ConsoleUtils.writeLine("Description: " + this.movie.getDescription());
-		ConsoleUtils.writeLine("Company: " + this.movie.getCompany());
-		ConsoleUtils.writeLine("Duration: " + this.movie.getDuration() + " min");
-		ConsoleUtils.writeLine("IMDB_score: " + this.movie.getIMDB_score());
+		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
+		ConsoleUtils.writeLine("                                                                  ");
+		ConsoleUtils.writeLine("                            " + this.movie.getMovieName() +"        ");
+		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
+		ConsoleUtils.writeLine("                Type: " + this.movie.getMovieOrSeries() + "    |    " + "Number of seasons: " + this.movie.getNumberOfSeasons());
+		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
+
+		ConsoleUtils.writeLine("                       Year of publishing: " + this.movie.getYearOfPublishing());
+		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
+		ConsoleUtils.writeLine("                                                                  ");
+		ConsoleUtils.writeLine("                            Description                           ");
+		ConsoleUtils.writeLine("                                                                  ");
+		ConsoleUtils.writeLine(this.movie.getDescription());
+		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
+		ConsoleUtils.writeLine("                                                                  ");
+		ConsoleUtils.writeLine("                       Production Company: " + this.movie.getCompany());
+		ConsoleUtils.writeLine("                       Duration: " + this.movie.getDuration() + " min");
+		ConsoleUtils.writeLine("                       IMDB_score: " + this.movie.getIMDB_score());
+		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
 		ConsoleUtils.writeNewLine();
     }
 }

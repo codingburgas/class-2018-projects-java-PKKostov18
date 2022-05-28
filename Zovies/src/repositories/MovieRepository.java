@@ -85,6 +85,7 @@ public class MovieRepository {
 		return movie;
 	}
 	
+	
 	private Movie mapToMovie(ResultSet resultSet) throws SQLException {
 		int movieId = resultSet.getInt("MovieId");
 		String movieName = resultSet.getString("MovieName");
@@ -94,9 +95,10 @@ public class MovieRepository {
 		String company = resultSet.getString("Company");
 		int duration = resultSet.getInt("Duration");
 		double IMDB_score = resultSet.getDouble("IMDB_Score");
+		int numberOfSeasons = resultSet.getInt("numberOfSeasons");
 		
 		Movie movie = new Movie(movieId, movieName, movieOrSeries, 
-				yearOfPublishing, description, company, duration, IMDB_score);
+				yearOfPublishing, description, company, duration, IMDB_score, numberOfSeasons);
 		return movie;
 	}
 	

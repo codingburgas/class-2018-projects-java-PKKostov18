@@ -12,9 +12,10 @@ public class Movie {
     private String company;
     private int duration;
     private double IMDB_score;
+    private int numberOfSeasons;
 
     public Movie(int movieId, String movieName, String movieOrSeries, int yearOfPublishing, String description,
-			String company, int duration, double IMDB_score) {
+			String company, int duration, double IMDB_score, int numberOfSeasons) {
 		super();
 		this.movieId = movieId;
 		this.movieName = movieName;
@@ -24,6 +25,7 @@ public class Movie {
 		this.company = company;
 		this.duration = duration;
 		this.IMDB_score = IMDB_score;
+		this.numberOfSeasons = numberOfSeasons;
 	}
     
 	public int getMovieId() {
@@ -89,6 +91,14 @@ public class Movie {
 	public void setIMDB_score(double iMDB_score) {
 		IMDB_score = iMDB_score;
 	}
+	
+	public double getNumberOfSeasons() {
+		return numberOfSeasons;
+	}
+
+	public void setNumberOfSeasons(int numberOfSeasons) {
+		this.numberOfSeasons = numberOfSeasons;
+	}
 
 	@Override
     public boolean equals(Object o) {
@@ -109,6 +119,7 @@ public class Movie {
                 ", company = " + company + '\'' +
                 ", duration = " + duration + '\'' +
                 ", IMDB_score = " + IMDB_score +
+                ", numberOfSeasons = " + numberOfSeasons +
                 '}';
     }
 }
