@@ -27,7 +27,7 @@ public class LoggedUserManagementController {
 					break;
 				}
 				case 4: {
-					
+					viewAllMoviesOrSeriesByGenre();
 					break;
 				}
 				case 5: {
@@ -70,6 +70,11 @@ public class LoggedUserManagementController {
 	private void viewAllFavourites() {
 		MovieController viewAllFavouritesController = new MovieController();
 		viewAllFavouritesController.viewFavourites();
+    }
+	
+	private void viewAllMoviesOrSeriesByGenre() {
+		MovieController viewAllMoviesOrSeriesByGenreController = new MovieController();
+		viewAllMoviesOrSeriesByGenreController.viewAllMoviesOrSeriesByGenre();;
     }
 	
 	private void backToMainMenu() {

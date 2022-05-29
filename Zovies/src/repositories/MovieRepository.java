@@ -63,7 +63,7 @@ public class MovieRepository {
 	
 	public List<Movie> getAllMoviesAndSeriesByGenre(String genre) {
 		List<Movie> listOfMovies = new ArrayList<>();
-		String query = "SELECT movies.MovieName FROM movies JOIN genresmovies ON movies.MovieId = genresmovies.MovieId JOIN genres ON genres.GenreId = genresmovies.GenreId WHERE genres.Genre = ?";
+		String query = "SELECT * FROM movies JOIN genresmovies ON movies.MovieId = genresmovies.MovieId JOIN genres ON genres.GenreId = genresmovies.GenreId WHERE genres.Genre = ?";
 		try (Connection conn = DBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 					

@@ -63,4 +63,14 @@ public class MovieService {
 		movies.stream().forEach(movie -> System.out.println(movie.getMovieName()));
 		ConsoleUtils.writeNewLine();
 	}
+	
+	public void displayAllMoviesByGenre(String genre) {
+		
+		List<Movie> movies = movieRepository.getAllMoviesAndSeriesByGenre(genre);
+		
+		ConsoleUtils.writeLine("Movie and series names:");
+		ConsoleUtils.writeNewLine();
+		movies.stream().forEach(movie -> System.out.println(movie.getMovieName()));
+		ConsoleUtils.writeNewLine();
+	}
 }

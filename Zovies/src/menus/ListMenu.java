@@ -4,24 +4,31 @@ import utils.ConsoleUtils;
 
 public class ListMenu {
 
-	public static void AllMoviesMenu() {
+	public static void allMoviesMenu() {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		ConsoleUtils.writeLine("|                   List of all uploaded movies                    |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 	
-	public static void AllSeriesMenu() {
+	public static void allSeriesMenu() {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		ConsoleUtils.writeLine("|                   List of all uploaded series                    |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 	
-	public static void AllFavouritesMenu() {
+	public static void allFavouritesMenu() {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		ConsoleUtils.writeLine("|                      List of all favourites                      |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
+	public static void allMoviesByGenreMenu() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                        Type name of genre                        |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 }
