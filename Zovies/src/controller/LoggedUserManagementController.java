@@ -23,7 +23,7 @@ public class LoggedUserManagementController {
 					break;
 				}
 				case 3: {
-					
+					viewAllFavourites();
 					break;
 				}
 				case 4: {
@@ -58,13 +58,18 @@ public class LoggedUserManagementController {
 	}
 	
 	private void viewAllMovies() {
-		ViewAllMoviesController viewAllMoviesController = new ViewAllMoviesController();
+		MovieController viewAllMoviesController = new MovieController();
 		viewAllMoviesController.viewAllMovies();
     }
 	
 	private void viewAllSeries() {
-		ViewAllMoviesController viewAllMoviesController = new ViewAllMoviesController();
-		viewAllMoviesController.viewAllSeries();
+		MovieController viewAllSeriesController = new MovieController();
+		viewAllSeriesController.viewAllSeries();
+    }
+	
+	private void viewAllFavourites() {
+		MovieController viewAllFavouritesController = new MovieController();
+		viewAllFavouritesController.viewFavourites();
     }
 	
 	private void backToMainMenu() {

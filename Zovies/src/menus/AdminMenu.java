@@ -47,6 +47,7 @@ public class AdminMenu {
 		ConsoleUtils.writeLine("|                       21. Delete series                          |");
 		ConsoleUtils.writeLine("|                       22. View all users                         |");
 		ConsoleUtils.writeLine("|                       23. View all admins                        |");
+		ConsoleUtils.writeLine("|                       24. LOG OUT                                |");
 		ConsoleUtils.writeLine("|                                                                  |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");		
 	}

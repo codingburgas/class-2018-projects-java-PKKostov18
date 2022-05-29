@@ -92,7 +92,7 @@ public class Movie {
 		IMDB_score = iMDB_score;
 	}
 	
-	public double getNumberOfSeasons() {
+	public int getNumberOfSeasons() {
 		return numberOfSeasons;
 	}
 
@@ -118,7 +118,7 @@ public class Movie {
                 ", description = " + description + '\'' +
                 ", company = " + company + '\'' +
                 ", duration = " + duration + '\'' +
-                ", IMDB_score = " + IMDB_score +
+                ", IMDB_score = " + IMDB_score + '\'' +
                 ", numberOfSeasons = " + numberOfSeasons +
                 '}';
     }

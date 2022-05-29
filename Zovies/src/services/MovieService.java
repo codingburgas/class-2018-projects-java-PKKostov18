@@ -5,6 +5,7 @@ import java.util.List;
 import models.Movie;
 import repositories.MovieRepository;
 import utils.ConsoleUtils;
+import utils.PasswordManager;
 
 public class MovieService {
 	
@@ -25,6 +26,7 @@ public class MovieService {
     }
 	
 	public void displayAllMovieNames() {
+		
 		List<Movie> movies = movieRepository.getAllMovies();
 		
 		ConsoleUtils.writeLine("Movie names:");
@@ -36,16 +38,29 @@ public class MovieService {
 	public void displayAllSeriesNames() {
 		List<Movie> series = movieRepository.getAllSeries();
 		
-		ConsoleUtils.writeLine("Movie names:");
+		ConsoleUtils.writeLine("Series names:");
 		ConsoleUtils.writeNewLine();
 		series.stream().forEach(movie -> System.out.println(movie.getMovieName()));
 		ConsoleUtils.writeNewLine();
+	}
+	
+	public void insertFavouriteMovieOrSeries(int movieId, int userId) {
+		movieRepository.insertFavouriteMovieOrSeries(movieId, userId);
 	}
 
 	public Movie displayMovieByMovieName(String movieName) {
 		
 		Movie movie = movieRepository.getMovieByMovieName(movieName);
-		
 		return movie;
+	}
+	
+	public void displayAllFavouriteMoviesAndSeries(int userId) {
+		
+		List<Movie> movies = movieRepository.getAllFavouriteMoviesAndSeries(userId);
+		
+		ConsoleUtils.writeLine("Movie and series names:");
+		ConsoleUtils.writeNewLine();
+		movies.stream().forEach(movie -> System.out.println(movie.getMovieName()));
+		ConsoleUtils.writeNewLine();
 	}
 }

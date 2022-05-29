@@ -3,16 +3,20 @@ package controller;
 import menus.*;
 import models.Movie;
 import utils.ConsoleUtils;
+import services.AuthenticationService;
 import services.MovieService;
+import services.UserService;
 
-public class ViewAllMoviesController{
+public class MovieController{
 	
 	private final MovieService movieService;
+	private final AuthenticationService authService;
 	
 	Movie movie = null;
 	
-	public ViewAllMoviesController() {
+	public MovieController() {
 		this.movieService = MovieService.getInstance();
+		this.authService = AuthenticationService.getInstance();
     }
 	
 	public void viewAllMovies() {
@@ -42,9 +46,10 @@ public class ViewAllMoviesController{
 			}
 		}
 		
-		ConsoleUtils.writeLine("Do you want to see another movie info or you want to go back: "); 
+		ConsoleUtils.writeLine("Choose what you want to do: ");  
 		ConsoleUtils.writeLine("1 for see another movie info");
-		ConsoleUtils.writeLine("2 for back"); 
+		ConsoleUtils.writeLine("2 for favourite"); 
+		ConsoleUtils.writeLine("3 for back"); 
 		ConsoleUtils.write("Choose: "); int option = ConsoleUtils.readInteger();
 		System.out.println();
 		
@@ -55,6 +60,17 @@ public class ViewAllMoviesController{
 					break;
 				}
 				case 2: {
+					movieService.insertFavouriteMovieOrSeries(movie.getMovieId(), authService.getLoggedUser().getUserId());
+					ConsoleUtils.writeLine("Successfully added to your favourites!");
+					ConsoleUtils.write("Type 1 to go back: "); option = ConsoleUtils.readInteger();
+					
+					while(option != 1) {
+						ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+					}
+					backToUserMenu();
+					break;
+				}
+				case 3: {
 					backToUserMenu();
 					break;
 				}
@@ -66,7 +82,7 @@ public class ViewAllMoviesController{
 	
 	public void viewAllSeries() {
 		
-		ListMenu.AllMoviesMenu();
+		ListMenu.AllSeriesMenu();
 		
 		movieService.displayAllSeriesNames();
 		
@@ -91,9 +107,10 @@ public class ViewAllMoviesController{
 			}
 		}
 		
-		ConsoleUtils.writeLine("Do you want to see another series info or you want to go back: "); 
+		ConsoleUtils.writeLine("Choose what you want to do: "); 
 		ConsoleUtils.writeLine("1 for see another series info");
-		ConsoleUtils.writeLine("2 for back"); 
+		ConsoleUtils.writeLine("2 for favourite"); 
+		ConsoleUtils.writeLine("3 for back"); 
 		ConsoleUtils.write("Choose: "); int option = ConsoleUtils.readInteger();
 		System.out.println();
 		
@@ -104,6 +121,17 @@ public class ViewAllMoviesController{
 					break;
 				}
 				case 2: {
+					movieService.insertFavouriteMovieOrSeries(movie.getMovieId(), authService.getLoggedUser().getUserId());
+					ConsoleUtils.writeLine("Successfully added to your favourites!");
+					ConsoleUtils.write("Type 1 to go back: "); option = ConsoleUtils.readInteger();
+					
+					while(option != 1) {
+						ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+					}
+					backToUserMenu();
+					break;
+				}
+				case 3: {
 					backToUserMenu();
 					break;
 				}
@@ -111,6 +139,20 @@ public class ViewAllMoviesController{
 					ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
 			}	
 		}	
+	}
+	
+	public void viewFavourites() {
+		
+		ListMenu.AllFavouritesMenu();
+		
+		movieService.displayAllFavouriteMoviesAndSeries(authService.getLoggedUser().getUserId());
+		
+		ConsoleUtils.write("Type 1 to go back: "); int option = ConsoleUtils.readInteger();
+		
+		while(option != 1) {
+			ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+		}
+		backToUserMenu();
 	}
 	
 	private void backToUserMenu() {
@@ -122,22 +164,38 @@ public class ViewAllMoviesController{
 		ConsoleUtils.writeNewLine();
 		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
 		ConsoleUtils.writeLine("                                                                  ");
-		ConsoleUtils.writeLine("                            " + this.movie.getMovieName() +"        ");
+		ConsoleUtils.writeLine("                                                        " + this.movie.getMovieName() +"        ");
 		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
-		ConsoleUtils.writeLine("                Type: " + this.movie.getMovieOrSeries() + "    |    " + "Number of seasons: " + this.movie.getNumberOfSeasons());
+		ConsoleUtils.writeLine("                                            Type: " + this.movie.getMovieOrSeries() + "    |    " + "Number of seasons: " + this.movie.getNumberOfSeasons());
 		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
 
-		ConsoleUtils.writeLine("                       Year of publishing: " + this.movie.getYearOfPublishing());
+		ConsoleUtils.writeLine("                                                   Year of publishing: " + this.movie.getYearOfPublishing());
 		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
 		ConsoleUtils.writeLine("                                                                  ");
-		ConsoleUtils.writeLine("                            Description                           ");
+		ConsoleUtils.writeLine("                                                        Description                           ");
 		ConsoleUtils.writeLine("                                                                  ");
-		ConsoleUtils.writeLine(this.movie.getDescription());
+		
+		if(this.movie.getDescription().length() > 131) {
+			
+			ConsoleUtils.writeLine(this.movie.getDescription().substring(0, 131) + "- ");
+			
+			if(this.movie.getDescription().length() - 131 > 131) {
+				ConsoleUtils.writeLine(this.movie.getDescription().substring(131, 262)  + "- ");
+				ConsoleUtils.writeLine(this.movie.getDescription().substring(262, this.movie.getDescription().length()));
+			}
+			else {
+				ConsoleUtils.writeLine(this.movie.getDescription().substring(131, this.movie.getDescription().length()));
+			}	
+		}
+		else {
+			ConsoleUtils.writeLine(this.movie.getDescription());
+		}
+
 		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
 		ConsoleUtils.writeLine("                                                                  ");
-		ConsoleUtils.writeLine("                       Production Company: " + this.movie.getCompany());
-		ConsoleUtils.writeLine("                       Duration: " + this.movie.getDuration() + " min");
-		ConsoleUtils.writeLine("                       IMDB_score: " + this.movie.getIMDB_score());
+		ConsoleUtils.writeLine("                                                   Production Company: " + this.movie.getCompany());
+		ConsoleUtils.writeLine("                                                   Duration: " + this.movie.getDuration() + " min");
+		ConsoleUtils.writeLine("                                                   IMDB_score: " + this.movie.getIMDB_score());
 		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
 		ConsoleUtils.writeNewLine();
     }

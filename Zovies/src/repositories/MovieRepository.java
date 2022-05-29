@@ -61,13 +61,71 @@ public class MovieRepository {
 		return listOfMovies;
 	}
 	
+	public List<Movie> getAllMoviesAndSeriesByGenre(String genre) {
+		List<Movie> listOfMovies = new ArrayList<>();
+		String query = "SELECT movies.MovieName FROM movies JOIN genresmovies ON movies.MovieId = genresmovies.MovieId JOIN genres ON genres.GenreId = genresmovies.GenreId WHERE genres.Genre = ?";
+		try (Connection conn = DBConnection.getConnection();
+				PreparedStatement ps = conn.prepareStatement(query)) {
+					
+			ps.setString(1, genre);
+			
+			ResultSet resultSet = ps.executeQuery();
+			
+			while (resultSet.next()) {
+				Movie movie = mapToMovie(resultSet);
+				listOfMovies.add(movie);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listOfMovies;
+	}
+	
+	public List<Movie> getAllFavouriteMoviesAndSeries(int userId) {
+		List<Movie> listOfMoviesSeries = new ArrayList<>();
+		String query = "SELECT * FROM movies JOIN favourites ON movies.MovieId = favourites.MovieId JOIN users ON favourites.UserId = users.UserId WHERE users.UserId = ?";
+		try (Connection conn = DBConnection.getConnection();
+				PreparedStatement ps = conn.prepareStatement(query)) {
+					
+			ps.setInt(1, userId);
+			
+			ResultSet resultSet = ps.executeQuery();
+			
+			while (resultSet.next()) {
+				Movie movie = mapToMovie(resultSet);
+				listOfMoviesSeries.add(movie);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listOfMoviesSeries;
+	}
+	
+	public void insertFavouriteMovieOrSeries(int movieId, int userId) {
+		String query1 = "INSERT INTO favourites (MovieId, UserId) VALUES (?, ?)";
+		try (Connection conn = DBConnection.getConnection(); 
+				PreparedStatement pst1 = conn.prepareStatement(query1)) {
+			
+			pst1.setInt(1, movieId);
+			pst1.setInt(2, userId);
+				
+			int rs = pst1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Movie getMovieByMovieName(String movieName) {
 		Movie movie = null;
 		String query = "SELECT * FROM movies WHERE MovieName = ?";
 		try (Connection conn = DBConnection.getConnection();
 				PreparedStatement ps = getPSWithMovieName(conn, query, movieName);
 				ResultSet resultSet = ps.executeQuery()) {
-
+			
 			if(resultSet == null) {
 				return null;
 			}
@@ -84,6 +142,8 @@ public class MovieRepository {
 
 		return movie;
 	}
+	
+	
 	
 	
 	private Movie mapToMovie(ResultSet resultSet) throws SQLException {
