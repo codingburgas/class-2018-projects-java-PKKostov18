@@ -31,7 +31,7 @@ public class LoggedUserManagementController {
 					break;
 				}
 				case 5: {
-					
+					backToMainMenu();
 					break;
 				}
 				case 6: {
@@ -80,5 +80,10 @@ public class LoggedUserManagementController {
 	private void backToMainMenu() {
 		MainController mainMenu = new MainController();
 		mainMenu.run();
+    }
+	
+	private void viewAllActors() {
+		MovieController actors = new MovieController();
+		actors.viewAllActors();;
     }
 }

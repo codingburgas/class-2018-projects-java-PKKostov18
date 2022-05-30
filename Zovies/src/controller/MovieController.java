@@ -141,6 +141,28 @@ public class MovieController{
 		}	
 	}
 	
+	public void viewAllActors() {
+		
+		ListMenu.allMoviesMenu();
+		
+		movieService.displayAllMovieNames();
+		 
+		ConsoleUtils.writeLine("Press 1 to go back:"); int option = ConsoleUtils.readInteger();
+		System.out.println();
+		
+		while(true) {
+			switch (option) {
+				case 1: {
+					backToUserMenu();
+					break;
+				}
+				
+				default:
+					ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+			}	
+		}	
+	}
+	
 	public void viewFavourites() {
 		
 		ListMenu.allFavouritesMenu();
@@ -224,7 +246,69 @@ public void viewAllMoviesOrSeriesByGenre() {
 		}	
 	}
 	
+public void viewAllMoviesOrSeriesByActor() {
 	
+	ListMenu.allMoviesByGenreMenu();
+	
+	ConsoleUtils.write("Actor name: "); String genre  = ConsoleUtils.read();
+	
+	movieService.displayAllMoviesByGenre(genre);
+	
+	ConsoleUtils.write("Please type the name of the movie you want more info about: "); String movieName = ConsoleUtils.read();
+	
+    movie = movieService.displayMovieByMovieName(movieName);
+	
+	if(movie != null) {
+		displayMovieSeriesInfo(movie);
+	}
+
+	while(movieService.displayMovieByMovieName(movieName) == null) {
+		
+		ErrorMenu.invalidMovieName();
+		
+		ConsoleUtils.write("Please type the name of the movie you want more info about: ");
+		movieName = ConsoleUtils.read();
+		
+		movie = movieService.displayMovieByMovieName(movieName);
+
+		if(movie != null) {
+			displayMovieSeriesInfo(movie);
+		}
+	}
+	
+	ConsoleUtils.writeLine("Choose what you want to do: ");  
+	ConsoleUtils.writeLine("1 for see another movie info");
+	ConsoleUtils.writeLine("2 for favourite"); 
+	ConsoleUtils.writeLine("3 for back"); 
+	ConsoleUtils.write("Choose: "); int option = ConsoleUtils.readInteger();
+	System.out.println();
+	
+	while(true) {
+		switch (option) {
+			case 1: {
+				viewAllMovies();
+				break;
+			}
+			case 2: {
+				movieService.insertFavouriteMovieOrSeries(movie.getMovieId(), authService.getLoggedUser().getUserId());
+				ConsoleUtils.writeLine("Successfully added to your favourites!");
+				ConsoleUtils.write("Type 1 to go back: "); option = ConsoleUtils.readInteger();
+				
+				while(option != 1) {
+					ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+				}
+				backToUserMenu();
+				break;
+			}
+			case 3: {
+				backToUserMenu();
+				break;
+			}
+			default:
+				ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+		}	
+	}	
+}
 	
 	
 	private void displayMovieSeriesInfo(Movie movie) {

@@ -3,6 +3,7 @@ package services;
 import java.util.List;
 
 import models.Movie;
+import repositories.ActorRepository;
 import repositories.MovieRepository;
 import utils.ConsoleUtils;
 import utils.PasswordManager;
@@ -11,6 +12,8 @@ public class MovieService {
 	
 	private static MovieService instance = null;
 	private final MovieRepository movieRepository;
+	
+
 	
     private MovieService() {
         this.movieRepository = MovieRepository.getInstance();
@@ -34,6 +37,8 @@ public class MovieService {
 		movies.stream().forEach(movie -> System.out.println(movie.getMovieName()));
 		ConsoleUtils.writeNewLine();
 	}
+	
+
 	
 	public void displayAllSeriesNames() {
 		List<Movie> series = movieRepository.getAllSeries();

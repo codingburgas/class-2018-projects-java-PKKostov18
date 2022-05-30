@@ -60,7 +60,7 @@ public class MovieRepository {
 		
 		return listOfMovies;
 	}
-	
+		
 	public List<Movie> getAllMoviesAndSeriesByGenre(String genre) {
 		List<Movie> listOfMovies = new ArrayList<>();
 		String query = "SELECT * FROM movies JOIN genresmovies ON movies.MovieId = genresmovies.MovieId JOIN genres ON genres.GenreId = genresmovies.GenreId WHERE genres.Genre = ?";
@@ -82,6 +82,29 @@ public class MovieRepository {
 		
 		return listOfMovies;
 	}
+	
+	public List<Movie> getAllMoviesAndSeriesByActor(String genre) {
+		List<Movie> listOfMovies = new ArrayList<>();
+		String query = "SELECT * FROM movies JOIN actorsmovies ON movies.MovieId = actorsmovies.ActorId JOIN actors ON actors.ActorId = actorsmovies.ActorId WHERE actors.ActorName = ?";
+		try (Connection conn = DBConnection.getConnection();
+				PreparedStatement ps = conn.prepareStatement(query)) {
+					
+			ps.setString(1, genre);
+			
+			ResultSet resultSet = ps.executeQuery();
+			
+			while (resultSet.next()) {
+				Movie movie = mapToMovie(resultSet);
+				listOfMovies.add(movie);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listOfMovies;
+	}
+
 	
 	public List<Movie> getAllFavouriteMoviesAndSeries(int userId) {
 		List<Movie> listOfMoviesSeries = new ArrayList<>();

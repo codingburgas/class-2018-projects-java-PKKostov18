@@ -18,6 +18,13 @@ public class ListMenu {
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 	
+public static void allActorsMenu() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                   List of all uploaded actors                    |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
 	public static void allFavouritesMenu() {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
@@ -29,6 +36,13 @@ public class ListMenu {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		ConsoleUtils.writeLine("|                        Type name of genre                        |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
+	public static void allMoviesByActorMenu() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                        Type name of actor                        |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 }
