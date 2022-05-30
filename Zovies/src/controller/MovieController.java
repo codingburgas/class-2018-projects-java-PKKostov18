@@ -3,6 +3,7 @@ package controller;
 import menus.*;
 import models.Movie;
 import utils.ConsoleUtils;
+import services.ActorService;
 import services.AuthenticationService;
 import services.MovieService;
 import services.UserService;
@@ -11,12 +12,14 @@ public class MovieController{
 	
 	private final MovieService movieService;
 	private final AuthenticationService authService;
+	private final ActorService actorService;
 	
 	Movie movie = null;
 	
 	public MovieController() {
 		this.movieService = MovieService.getInstance();
 		this.authService = AuthenticationService.getInstance();
+		this.actorService = ActorService.getInstance();
     }
 	
 	public void viewAllMovies() {
@@ -143,9 +146,9 @@ public class MovieController{
 	
 	public void viewAllActors() {
 		
-		ListMenu.allMoviesMenu();
+		ListMenu.allActorsMenu();
 		
-		movieService.displayAllMovieNames();
+		actorService.displayAllActorNames();
 		 
 		ConsoleUtils.writeLine("Press 1 to go back:"); int option = ConsoleUtils.readInteger();
 		System.out.println();

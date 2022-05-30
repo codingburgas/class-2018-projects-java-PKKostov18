@@ -31,7 +31,7 @@ public class LoggedUserManagementController {
 					break;
 				}
 				case 5: {
-					backToMainMenu();
+					viewAllActors();
 					break;
 				}
 				case 6: {
