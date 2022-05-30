@@ -79,7 +79,7 @@ public class LoggedUserManagementController {
 	
 	private void viewAllMoviesOrSeriesByGenre() {
 		MovieController viewAllMoviesOrSeriesByGenreController = new MovieController();
-		viewAllMoviesOrSeriesByGenreController.viewAllMoviesOrSeriesByGenre();;
+		viewAllMoviesOrSeriesByGenreController.viewAllMoviesOrSeriesByGenre();
     }
 	
 	private void backToMainMenu() {

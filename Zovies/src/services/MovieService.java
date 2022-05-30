@@ -13,8 +13,6 @@ public class MovieService {
 	private static MovieService instance = null;
 	private final MovieRepository movieRepository;
 	
-
-	
     private MovieService() {
         this.movieRepository = MovieRepository.getInstance();
     }
@@ -28,54 +26,42 @@ public class MovieService {
         return MovieService.instance;
     }
 	
-	public void displayAllMovieNames() {
+	public List<Movie> getAllMovieNames() {
 		
-		List<Movie> movies = movieRepository.getAllMovies();
-		
-		ConsoleUtils.writeLine("Movie names:");
-		ConsoleUtils.writeNewLine();
-		movies.stream().forEach(movie -> System.out.println(movie.getMovieName()));
-		ConsoleUtils.writeNewLine();
+		List<Movie> movies = movieRepository.getAllMovies();	
+		return movies;
 	}
-	
-
-	
-	public void displayAllSeriesNames() {
+		
+	public List<Movie> getAllSeriesNames() {
 		List<Movie> series = movieRepository.getAllSeries();
-		
-		ConsoleUtils.writeLine("Series names:");
-		ConsoleUtils.writeNewLine();
-		series.stream().forEach(movie -> System.out.println(movie.getMovieName()));
-		ConsoleUtils.writeNewLine();
-	}
-	
-	public void insertFavouriteMovieOrSeries(int movieId, int userId) {
-		movieRepository.insertFavouriteMovieOrSeries(movieId, userId);
+		return series;
 	}
 
-	public Movie displayMovieByMovieName(String movieName) {
+	public Movie getMovieByMovieName(String movieName) {
 		
 		Movie movie = movieRepository.getMovieByMovieName(movieName);
 		return movie;
 	}
 	
-	public void displayAllFavouriteMoviesAndSeries(int userId) {
+	public List<Movie> getAllFavouriteMoviesAndSeries(int userId) {
 		
 		List<Movie> movies = movieRepository.getAllFavouriteMoviesAndSeries(userId);
-		
-		ConsoleUtils.writeLine("Movie and series names:");
-		ConsoleUtils.writeNewLine();
-		movies.stream().forEach(movie -> System.out.println(movie.getMovieName()));
-		ConsoleUtils.writeNewLine();
+		return movies;
 	}
 	
-	public void displayAllMoviesByGenre(String genre) {
+	public List<Movie> getAllMoviesAndSeriesByGenre(String genre) {
 		
 		List<Movie> movies = movieRepository.getAllMoviesAndSeriesByGenre(genre);
 		
-		ConsoleUtils.writeLine("Movie and series names:");
-		ConsoleUtils.writeNewLine();
-		movies.stream().forEach(movie -> System.out.println(movie.getMovieName()));
-		ConsoleUtils.writeNewLine();
+		if(movies.isEmpty()) {
+			return null;
+		}
+		return movies;
+	}
+	
+	public Movie getMovieByMovieNameByGenre(String movieName, String genre) {
+		
+		Movie movie = movieRepository.getMovieOrSeriesByGenreAndMovieName(movieName, genre);
+		return movie;
 	}
 }

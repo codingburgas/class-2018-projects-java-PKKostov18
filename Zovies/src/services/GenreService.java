@@ -24,12 +24,14 @@ public class GenreService {
         return GenreService.instance;
     }
 	
-	public void displayAllGenres() {
+	public List<Genre> getAllGenres() {
 		List<Genre> genres = genreRepository.getAllGenres();
 		
 		ConsoleUtils.writeLine("Movie names:");
 		ConsoleUtils.writeNewLine();
 		genres.stream().forEach(genre -> System.out.println(genre.getGenre()));
 		ConsoleUtils.writeNewLine();
+		
+		return genres;
 	}
 }

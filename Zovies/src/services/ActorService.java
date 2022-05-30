@@ -21,8 +21,7 @@ public class ActorService {
         this.actorRepository = ActorRepository.getInstance();
         this.movieRepository = MovieRepository.getInstance();
 	}
-	
-	
+		
 	public static ActorService getInstance() {
 
         if (ActorService.instance == null) {
@@ -32,23 +31,15 @@ public class ActorService {
         return ActorService.instance;
     }
 	
-	public void displayAllActorNames() {
+	public List<Actor> getAllActorNames() {
 		
 		List<Actor> actors = actorRepository.getAllActors();
-		
-		ConsoleUtils.writeLine("Actor names:");
-		ConsoleUtils.writeNewLine();
-		actors.stream().forEach(actor -> System.out.println(actor.getActorName()));
-		ConsoleUtils.writeNewLine();
+		return actors;
 	}
 
-	public void displayAllMoviesByActor(String genre) {
+	public List<Movie> getAllMoviesByActor(String genre) {
 	
-	List<Movie> actors = movieRepository.getAllMoviesAndSeriesByActor(genre);
-	
-	ConsoleUtils.writeLine("Movies with this actor:");
-	ConsoleUtils.writeNewLine();
-	actors.stream().forEach(actor -> System.out.println(actor.getMovieName()));
-	ConsoleUtils.writeNewLine();
-}
+		List<Movie> movies = movieRepository.getAllMoviesAndSeriesByActor(genre);
+		return movies;
+	}
 }

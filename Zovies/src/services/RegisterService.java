@@ -9,6 +9,10 @@ public class RegisterService {
 	private static RegisterService instance = null;
 	private boolean correctUser;
 	
+	private RegisterService() {
+        this.usersRepository = UserRepository.getInstance();
+    }
+	
 	public static RegisterService getInstance() {
 
         if (RegisterService.instance == null) {
@@ -16,10 +20,6 @@ public class RegisterService {
 		}
 
         return RegisterService.instance;
-    }
-	
-	private RegisterService() {
-        this.usersRepository = UserRepository.getInstance();
     }
 	
 	public boolean getCorrectUser() {
