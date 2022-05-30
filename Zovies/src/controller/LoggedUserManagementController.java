@@ -31,11 +31,11 @@ public class LoggedUserManagementController {
 					break;
 				}
 				case 5: {
-					viewAllActors();
+					viewAllMoviesOrSeriesByActor();
 					break;
 				}
 				case 6: {
-					
+					viewAllActors();
 					break;
 				}
 				case 7: {
@@ -70,6 +70,11 @@ public class LoggedUserManagementController {
 	private void viewAllFavourites() {
 		MovieController viewAllFavouritesController = new MovieController();
 		viewAllFavouritesController.viewFavourites();
+    }
+	
+	private void viewAllMoviesOrSeriesByActor() {
+		MovieController viewAllMoviesOrSeriesByActor = new MovieController();
+		viewAllMoviesOrSeriesByActor.viewAllMoviesOrSeriesByActor();
     }
 	
 	private void viewAllMoviesOrSeriesByGenre() {

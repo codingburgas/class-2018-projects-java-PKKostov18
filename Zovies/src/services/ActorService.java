@@ -14,10 +14,13 @@ public class ActorService {
 	
 	private static ActorService instance = null;
 	private final ActorRepository actorRepository;
+	private final MovieRepository movieRepository;
+	
 	
 	private ActorService() {
         this.actorRepository = ActorRepository.getInstance();
-    }
+        this.movieRepository = MovieRepository.getInstance();
+	}
 	
 	
 	public static ActorService getInstance() {
@@ -29,7 +32,7 @@ public class ActorService {
         return ActorService.instance;
     }
 	
-public void displayAllActorNames() {
+	public void displayAllActorNames() {
 		
 		List<Actor> actors = actorRepository.getAllActors();
 		
@@ -38,4 +41,14 @@ public void displayAllActorNames() {
 		actors.stream().forEach(actor -> System.out.println(actor.getActorName()));
 		ConsoleUtils.writeNewLine();
 	}
+
+	public void displayAllMoviesByActor(String genre) {
+	
+	List<Movie> actors = movieRepository.getAllMoviesAndSeriesByActor(genre);
+	
+	ConsoleUtils.writeLine("Movies with this actor:");
+	ConsoleUtils.writeNewLine();
+	actors.stream().forEach(actor -> System.out.println(actor.getMovieName()));
+	ConsoleUtils.writeNewLine();
+}
 }

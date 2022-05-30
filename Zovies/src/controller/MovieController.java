@@ -251,11 +251,11 @@ public void viewAllMoviesOrSeriesByGenre() {
 	
 public void viewAllMoviesOrSeriesByActor() {
 	
-	ListMenu.allMoviesByGenreMenu();
+	ListMenu.allMoviesByActorMenu();
 	
-	ConsoleUtils.write("Actor name: "); String genre  = ConsoleUtils.read();
+	ConsoleUtils.write("Actor name: "); String actor  = ConsoleUtils.read();
 	
-	movieService.displayAllMoviesByGenre(genre);
+	actorService.displayAllMoviesByActor(actor);
 	
 	ConsoleUtils.write("Please type the name of the movie you want more info about: "); String movieName = ConsoleUtils.read();
 	
