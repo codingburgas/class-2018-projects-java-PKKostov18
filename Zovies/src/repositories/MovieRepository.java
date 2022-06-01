@@ -155,9 +155,37 @@ public class MovieRepository {
 		Movie movie = null;
 		String query = "SELECT * FROM movies JOIN genresmovies ON movies.MovieId = genresmovies.MovieId JOIN genres ON genres.GenreId = genresmovies.GenreId WHERE genres.Genre = ? AND movies.MovieName = ?";
 		try (Connection conn = DBConnection.getConnection();
-				PreparedStatement ps = getPSWithMovieName(conn, query, movieName)) {
+				PreparedStatement ps = conn.prepareStatement(query)) {
 			
 			ps.setString(1, genre);
+			ps.setString(2, movieName);
+			
+			ResultSet resultSet = ps.executeQuery();
+			
+			if(resultSet == null) {
+				return null;
+			}
+			else {
+				while (resultSet.next()) {
+					movie = mapToMovie(resultSet);
+				}
+				return movie;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return movie;
+	}
+	
+	public Movie getMovieOrSeriesByActorAndMovieName(String actorName, String movieName) {
+		Movie movie = null;
+		String query = "SELECT * FROM movies JOIN actorsmovies ON movies.MovieId = actorsmovies.MovieId JOIN actors ON actors.ActorId = actorsmovies.ActorId WHERE actors.ActorName = ? AND movies.MovieName = ?";
+		try (Connection conn = DBConnection.getConnection();
+				PreparedStatement ps = conn.prepareStatement(query)) {
+			
+			ps.setString(1, actorName);
 			ps.setString(2, movieName);
 			
 			ResultSet resultSet = ps.executeQuery();

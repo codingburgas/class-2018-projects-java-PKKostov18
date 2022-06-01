@@ -41,6 +41,13 @@ public class ErrorMenu {
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 	
+	public static void invalidActorName() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|              Invalid actor name or don't have films              |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
 	public static void invalidFavourite() {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");

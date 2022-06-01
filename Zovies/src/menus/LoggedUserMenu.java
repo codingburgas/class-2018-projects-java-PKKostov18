@@ -19,7 +19,7 @@ public class LoggedUserMenu {
 		ConsoleUtils.writeLine("|                       3. View favourites                         |");
 		ConsoleUtils.writeLine("|                       4. View by genre                           |");
 		ConsoleUtils.writeLine("|                       5. View by actor                           |");
-		ConsoleUtils.writeLine("|                       6. View top 50 actors                      |");
+		ConsoleUtils.writeLine("|                       6. View top actors                         |");
 		ConsoleUtils.writeLine("|        __________________________________________________        |");
 		ConsoleUtils.writeLine("|                                                                  |");
 		ConsoleUtils.writeLine("|                             ACCOUNT                              |");

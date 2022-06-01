@@ -59,9 +59,25 @@ public class MovieService {
 		return movies;
 	}
 	
-	public Movie getMovieByMovieNameByGenre(String movieName, String genre) {
+	public List<Movie> getAllMoviesByActor(String actor) {
+		
+		List<Movie> movies = movieRepository.getAllMoviesAndSeriesByActor(actor);
+		
+		if(movies.isEmpty()) {
+			return null;
+		}
+		return movies;
+	}
+	
+	public Movie getMovieOrSeriesByGenreAndMovieName(String movieName, String genre) {
 		
 		Movie movie = movieRepository.getMovieOrSeriesByGenreAndMovieName(movieName, genre);
+		return movie;
+	}
+	
+	public Movie getMovieOrSeriesByActorAndMovieName(String actorName, String movieName) {
+		
+		Movie movie = movieRepository.getMovieOrSeriesByActorAndMovieName(actorName, movieName);
 		return movie;
 	}
 }

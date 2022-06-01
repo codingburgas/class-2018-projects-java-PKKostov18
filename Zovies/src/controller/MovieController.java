@@ -314,13 +314,13 @@ public class MovieController{
 		
 		ConsoleUtils.write("Please type the name of the movie or series you want more info about: "); String movieName = ConsoleUtils.read();
 		
-	    movie = movieService.getMovieByMovieNameByGenre(movieName, genre);
+	    movie = movieService.getMovieOrSeriesByGenreAndMovieName(movieName, genre);
 	    
-	    while(movieService.getMovieByMovieNameByGenre(movieName, genre) == null) {
+	    while(movieService.getMovieOrSeriesByGenreAndMovieName(movieName, genre) == null) {
 	    	
 	    	ErrorMenu.invalidMovieName();
 	    	ConsoleUtils.write("Please type the name of the movie or series you want more info about: "); movieName = ConsoleUtils.read();	
-		    movie = movieService.getMovieByMovieNameByGenre(movieName, genre);
+		    movie = movieService.getMovieOrSeriesByGenreAndMovieName(movieName, genre);
 		    
 		    if(movie != null) {
 		    	displayMovieSeriesInfo(movie);
@@ -373,13 +373,24 @@ public class MovieController{
 	}
 	
 	public void viewAllMoviesOrSeriesByActor() {
+		
+		ConsoleUtils.writeNewLine();
 	
 		ListMenu.allMoviesByActorMenu();
 		
 		ConsoleUtils.write("Actor name: "); String actor  = ConsoleUtils.read();
 		
-		List<Movie> movies = actorService.getAllMoviesByActor(actor);
+		List<Movie> movies = movieService.getAllMoviesByActor(actor);
 		
+		while(movieService.getAllMoviesByActor(actor) == null) {
+			
+			
+			ErrorMenu.invalidActorName();
+			ConsoleUtils.write("Actor name: "); actor = ConsoleUtils.read();	
+			movies = movieService.getAllMoviesByActor(actor);
+		}
+		
+		ConsoleUtils.writeNewLine();
 		ConsoleUtils.writeLine("Movies with this actor:");
 		ConsoleUtils.writeNewLine();
 		movies.stream().forEach(movie -> System.out.println(movie.getMovieName()));
@@ -387,46 +398,50 @@ public class MovieController{
 		
 		ConsoleUtils.write("Please type the name of the movie you want more info about: "); String movieName = ConsoleUtils.read();
 		
-	    movie = movieService.getMovieByMovieName(movieName);
+	    movie = movieService.getMovieOrSeriesByActorAndMovieName(actor, movieName);
+	    
+	    while(movieService.getMovieOrSeriesByActorAndMovieName(actor, movieName) == null) {
+	    	
+	    	ErrorMenu.invalidMovieName();
+	    	ConsoleUtils.write("Please type the name of the movie or series you want more info about: "); movieName = ConsoleUtils.read();	
+		    movie = movieService.getMovieOrSeriesByActorAndMovieName(actor, movieName);
+		    
+		    if(movie != null) {
+		    	displayMovieSeriesInfo(movie);
+		    }
+	    }
 		
-		if(movie != null) {
-			displayMovieSeriesInfo(movie);
-		}
-	
-		while(movieService.getMovieByMovieName(movieName) == null) {
-			
-			ErrorMenu.invalidMovieName();
-			
-			ConsoleUtils.write("Please type the name of the movie you want more info about: ");
-			movieName = ConsoleUtils.read();
-			
-			movie = movieService.getMovieByMovieName(movieName);
-	
-			if(movie != null) {
-				displayMovieSeriesInfo(movie);
-			}
-		}
-		
+	    ConsoleUtils.writeNewLine();
 		ConsoleUtils.writeLine("Choose what you want to do: ");  
 		ConsoleUtils.writeLine("1 for see another movie info");
 		ConsoleUtils.writeLine("2 for favourite"); 
 		ConsoleUtils.writeLine("3 for back"); 
 		ConsoleUtils.write("Choose: "); int option = ConsoleUtils.readInteger();
-		System.out.println();
+		ConsoleUtils.writeNewLine();
 		
 		while(true) {
 			switch (option) {
 				case 1: {
-					viewAllMovies();
-					break;
+					viewAllMoviesOrSeriesByActor();
 				}
 				case 2: {
-					favouriteService.insertFavouriteMovieOrSeries(movie.getMovieId(), authService.getLoggedUser().getUserId());
-					ConsoleUtils.writeLine("Successfully added to your favourites!");
-					ConsoleUtils.write("Type 1 to go back: "); option = ConsoleUtils.readInteger();
-					
-					while(option != 1) {
-						ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+					if(favouriteService.getFavouriteMovieOrSeries(movie.getMovieId(), authService.getLoggedUser().getUserId()) == true) {
+						favouriteService.insertFavouriteMovieOrSeries(movie.getMovieId(), authService.getLoggedUser().getUserId());
+						ConsoleUtils.writeLine("Successfully added to your favourites!");
+						ConsoleUtils.write("Type 1 to go back: "); option = ConsoleUtils.readInteger();
+						
+						while(option != 1) {
+							ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+						}
+					}
+					else {
+						ErrorMenu.invalidFavourite();
+						ConsoleUtils.writeNewLine();
+						ConsoleUtils.write("Type 1 to go back: "); option = ConsoleUtils.readInteger();
+						
+						while(option != 1) {
+							ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
+						}
 					}
 					backToUserMenu();
 					break;

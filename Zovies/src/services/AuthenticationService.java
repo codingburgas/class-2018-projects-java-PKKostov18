@@ -29,4 +29,8 @@ public class AuthenticationService {
     public void authenticateUser(String username, String password) {
         this.authenticatedUser = userService.getRegisteredUser(username, password);
     }
+    
+    public void destroySession() {
+    	authenticatedUser = null;  	
+    }
 }

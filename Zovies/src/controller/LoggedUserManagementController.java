@@ -4,7 +4,16 @@ import menus.ErrorMenu;
 import menus.LoggedUserMenu;
 import utils.ConsoleUtils;
 
+import services.AuthenticationService;
+
 public class LoggedUserManagementController {
+	
+	private final AuthenticationService authenticationService;
+	
+	public LoggedUserManagementController() {
+		this.authenticationService = AuthenticationService.getInstance();
+		
+	}
 
 	public void run() {
 		
@@ -46,6 +55,7 @@ public class LoggedUserManagementController {
 					break;
 				}
 				case 9: {
+					authenticationService.destroySession();
 					backToMainMenu();
 					break;
 				}

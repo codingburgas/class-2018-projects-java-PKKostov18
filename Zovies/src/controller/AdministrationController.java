@@ -27,11 +27,11 @@ public class AdministrationController {
 					break;
 				}
 				case 4: {
-					
+					viewAllMoviesOrSeriesByGenre();
 					break;
 				}
 				case 5: {
-					
+					viewAllMoviesOrSeriesByActor();
 					break;
 				}
 	
@@ -54,5 +54,15 @@ public class AdministrationController {
 	private void viewAllFavourites() {
 		MovieController viewAllFavouritesController = new MovieController();
 		viewAllFavouritesController.viewFavourites();
+    }
+	
+	private void viewAllMoviesOrSeriesByGenre() {
+		MovieController viewAllMoviesOrSeriesByGenre = new MovieController();
+		viewAllMoviesOrSeriesByGenre.viewAllMoviesOrSeriesByGenre();
+    }
+	
+	private void viewAllMoviesOrSeriesByActor() {
+		MovieController viewAllMoviesOrSeriesByActor = new MovieController();
+		viewAllMoviesOrSeriesByActor.viewAllMoviesOrSeriesByActor();
     }
 }
