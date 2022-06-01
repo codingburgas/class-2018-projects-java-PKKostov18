@@ -60,6 +60,45 @@ public class MovieRepository {
 		
 		return listOfMovies;
 	}
+	
+	public void insertMovie(String movieName, String movieOrSeries, int yearOfPublishing, String desctiption, String company, int duration, double imdbScore) {
+		String query1 = "INSERT INTO movies (MovieName, MovieOrSeries, YearOfPublishing, Description, Company, Duration, IMDB_Score) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		try (Connection conn = DBConnection.getConnection(); 
+				PreparedStatement pst1 = conn.prepareStatement(query1)) {
+			
+			pst1.setString(1, movieName);
+			pst1.setString(2, movieOrSeries);
+			pst1.setInt(3, yearOfPublishing);
+			pst1.setString(4, desctiption);
+			pst1.setString(5, company);
+			pst1.setInt(6, duration);
+			pst1.setDouble(7, imdbScore);
+				
+			int rs = pst1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void insertSeries(String movieName, String movieOrSeries, int yearOfPublishing, String desctiption, String company, int duration, double imdbScore, int numberOfSeasons) {
+		String query1 = "INSERT INTO movies (MovieName, MovieOrSeries, YearOfPublishing, Description, Company, Duration, IMDB_Score, NumberOfSeasons) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		try (Connection conn = DBConnection.getConnection(); 
+				PreparedStatement pst1 = conn.prepareStatement(query1)) {
+			
+			pst1.setString(1, movieName);
+			pst1.setString(2, movieOrSeries);
+			pst1.setInt(3, yearOfPublishing);
+			pst1.setString(4, desctiption);
+			pst1.setString(5, company);
+			pst1.setInt(6, duration);
+			pst1.setDouble(7, imdbScore);
+			pst1.setInt(8, numberOfSeasons);
+				
+			int rs = pst1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 		
 	public List<Movie> getAllMoviesAndSeriesByGenre(String genre) {
 		List<Movie> listOfMovies = new ArrayList<>();

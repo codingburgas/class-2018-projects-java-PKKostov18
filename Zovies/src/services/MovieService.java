@@ -80,4 +80,12 @@ public class MovieService {
 		Movie movie = movieRepository.getMovieOrSeriesByActorAndMovieName(actorName, movieName);
 		return movie;
 	}
+	
+	public void insertMovie(String movieName, String movieOrSeries, int yearOfPublishing, String desctiption, String company, int duration, double imdbScore) {
+		movieRepository.insertMovie(movieName, movieOrSeries, yearOfPublishing, desctiption, company, duration, imdbScore);
+	}
+	
+	public void insertSeries(String movieName, String movieOrSeries, int yearOfPublishing, String desctiption, String company, int duration, double imdbScore, int numberOfSeasons) {
+		movieRepository.insertSeries(movieName, movieOrSeries, yearOfPublishing, desctiption, company, duration, imdbScore, numberOfSeasons);
+	}
 }

@@ -42,4 +42,18 @@ public class ConsoleUtils {
 		}  
     	return result;
     }
+    
+    public static double readDouble() {
+    	
+    	Double result = null;
+    	
+    	while (result == null) {
+			try {
+				result = Double.parseDouble(scanner.nextLine());
+			} catch (NumberFormatException e) {
+				ErrorMenu.invalidInputError();
+			}
+		}  
+    	return result;
+    }
 }

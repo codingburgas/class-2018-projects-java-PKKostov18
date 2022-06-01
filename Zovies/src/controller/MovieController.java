@@ -290,6 +290,97 @@ public class MovieController{
 		loggedUserManagementController.run();
     }
 	
+	private void backToAdminMenu() {
+		AdministrationController administrationController = new AdministrationController();
+		administrationController.run();
+    }
+	
+	public void insertMovieOrSeries() {
+		
+		ConsoleUtils.writeNewLine();
+		ListMenu.insertMovieOrSeriesMenu();
+		ConsoleUtils.writeNewLine();
+		
+		ConsoleUtils.write("Movie name: "); String movieName = ConsoleUtils.read();
+		ConsoleUtils.write("Movie or Series: "); String movieOrSeries = ConsoleUtils.read();
+		
+		while(!movieOrSeries.equals("Movie") && !movieOrSeries.equals("Series")) {
+			ErrorMenu.invalidDataError(); 
+			
+			System.out.println(movieOrSeries);
+			
+			ConsoleUtils.write("Movie or Series: "); movieOrSeries = ConsoleUtils.read();
+		}
+		
+		System.out.println(movieOrSeries);
+
+		if(movieOrSeries.equals("Movie")) {
+			ConsoleUtils.write("Year of publishing: "); int yearOfPublishing = ConsoleUtils.readInteger();
+
+			while(yearOfPublishing < 1000 || yearOfPublishing > 9999) {
+				ErrorMenu.invalidDataError(); 
+				ConsoleUtils.write("Year of publishing: "); yearOfPublishing = ConsoleUtils.readInteger();
+			}
+			
+			ConsoleUtils.write("Description: "); String description = ConsoleUtils.read();
+			ConsoleUtils.write("Company: "); String company = ConsoleUtils.read();
+			ConsoleUtils.write("Duration: "); int duration = ConsoleUtils.readInteger();
+			ConsoleUtils.write("IMDB score: "); double imdbScore = ConsoleUtils.readDouble();
+			
+			while(imdbScore < 0 || imdbScore > 10) {
+				ErrorMenu.invalidDataError(); 
+				ConsoleUtils.write("IMDB score: "); imdbScore = ConsoleUtils.readInteger();
+			}
+			
+			movieService.insertMovie(movieName, movieOrSeries, yearOfPublishing, description, company, duration, imdbScore);
+			
+			ConsoleUtils.writeLine("Successfully added a movie!");
+			ConsoleUtils.write("Type 1 to back: "); int option = ConsoleUtils.readInteger();
+			
+			while(option != 1) {
+				ErrorMenu.invalidInputError();
+				ConsoleUtils.write("Type 1 to back: "); option = ConsoleUtils.readInteger();
+			}
+			
+			backToAdminMenu();
+		} 
+		else {
+			ConsoleUtils.write("Year of publishing: "); int yearOfPublishing = ConsoleUtils.readInteger();
+			while(yearOfPublishing < 1900 || yearOfPublishing > 2022) {
+				ErrorMenu.invalidDataError(); 
+				ConsoleUtils.write("Year of publishing: "); yearOfPublishing = ConsoleUtils.readInteger();
+			}
+			
+			ConsoleUtils.write("Description: "); String description = ConsoleUtils.read();
+			ConsoleUtils.write("Company: "); String company = ConsoleUtils.read();
+			ConsoleUtils.write("Duration: "); int duration = ConsoleUtils.readInteger();
+			ConsoleUtils.write("IMDB score: "); double imdbScore = ConsoleUtils.readDouble();
+			
+			while(imdbScore < 0 || imdbScore > 10) {
+				ErrorMenu.invalidDataError(); 
+				ConsoleUtils.write("IMDB score: "); imdbScore = ConsoleUtils.readInteger();
+			}
+			
+			ConsoleUtils.write("Number of seasons: "); int numberOfSeasons = ConsoleUtils.readInteger();
+			
+			movieService.insertSeries(movieName, movieOrSeries, yearOfPublishing, description, company, duration, imdbScore, numberOfSeasons);
+		
+			ConsoleUtils.writeNewLine();
+			ConsoleUtils.writeLine("Successfully added a series!");
+			ConsoleUtils.write("Type 1 to back: "); int option = ConsoleUtils.readInteger();
+			ConsoleUtils.writeNewLine();
+			
+			while(option != 1) {
+				ConsoleUtils.writeNewLine();
+				ErrorMenu.invalidInputError();
+				ConsoleUtils.write("Type 1 to back: "); option = ConsoleUtils.readInteger();
+				ConsoleUtils.writeNewLine();
+			}
+			
+			backToAdminMenu();
+		}
+	}
+	
 	public void viewAllMoviesOrSeriesByGenre() {
 		
 		ConsoleUtils.writeNewLine();

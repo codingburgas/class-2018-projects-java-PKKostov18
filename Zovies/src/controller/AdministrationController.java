@@ -2,12 +2,21 @@ package controller;
 
 import menus.AdminMenu;
 import menus.ErrorMenu;
+import services.AuthenticationService;
 import utils.ConsoleUtils;
 
 public class AdministrationController {
 	
+	private final AuthenticationService authenticationService;
+	
+	public AdministrationController() {
+		this.authenticationService = AuthenticationService.getInstance();
+		
+	}
+	
 	public void run() {		
 		
+		ConsoleUtils.writeNewLine();
 		AdminMenu.adminMenu();
 		
 		int choice = ConsoleUtils.readInteger();
@@ -32,6 +41,27 @@ public class AdministrationController {
 				}
 				case 5: {
 					viewAllMoviesOrSeriesByActor();
+					break;
+				}
+				case 6: {
+					insertMovieOrSeries();
+					break;
+				}
+				case 7: {
+					
+					break;
+				}
+				case 8: {
+					
+					break;
+				}
+				case 9: {
+					
+					break;
+				}
+				case 22: {
+					authenticationService.destroySession();
+					backToMainMenu();
 					break;
 				}
 	
@@ -64,5 +94,15 @@ public class AdministrationController {
 	private void viewAllMoviesOrSeriesByActor() {
 		MovieController viewAllMoviesOrSeriesByActor = new MovieController();
 		viewAllMoviesOrSeriesByActor.viewAllMoviesOrSeriesByActor();
+    }
+	
+	private void insertMovieOrSeries() {
+		MovieController insertMovieOrSeries = new MovieController();
+		insertMovieOrSeries.insertMovieOrSeries();
+    }
+	
+	private void backToMainMenu() {
+		MainController mainController = new MainController();
+		mainController.run();
     }
 }

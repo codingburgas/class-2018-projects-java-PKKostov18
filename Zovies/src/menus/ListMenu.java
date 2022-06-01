@@ -45,4 +45,11 @@ public static void allActorsMenu() {
 		ConsoleUtils.writeLine("|                        Type name of actor                        |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
+	
+	public static void insertMovieOrSeriesMenu() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                       Add a movie or series                      |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
 }
