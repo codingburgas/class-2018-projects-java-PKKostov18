@@ -496,31 +496,25 @@ INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (152, N'Jeremy Renner')
 GO
 INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (153, N'Elijah Wood')
 GO
-INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (154, N'
-Viggo Mortensen')
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (154, N'Viggo Mortensen')
 GO
 INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (155, N'Elizabeth Olsen')
 GO
-INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (156, N'
-Jared Leto')
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (156, N'Jared Leto')
 GO
 INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (157, N'Tom Hardy')
 GO
-INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (158, N'
-Cillian Murphy')
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (158, N'Cillian Murphy')
 GO
-INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (159, N'
-Tom Hiddleston')
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (159, N'Tom Hiddleston')
 GO
 INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (160, N'Charlie Cox')
 GO
-INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (161, N'
-Deborah Ann Woll')
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (161, N'Deborah Ann Woll')
 GO
 INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (162, N'Elden Henson')
 GO
-INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (163, N'
-Jon Bernthal')
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (163, N'Jon Bernthal')
 GO
 SET IDENTITY_INSERT [dbo].[actors] OFF
 GO
