@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [JavaProject]    Script Date: 5/30/2022 10:14:22 AM ******/
+/****** Object:  Database [JavaProject]    Script Date: 6/1/2022 9:43:50 AM ******/
 CREATE DATABASE [JavaProject]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [JavaProject] SET QUERY_STORE = OFF
 GO
 USE [JavaProject]
 GO
-/****** Object:  Table [dbo].[actors]    Script Date: 5/30/2022 10:14:22 AM ******/
+/****** Object:  Table [dbo].[actors]    Script Date: 6/1/2022 9:43:50 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +94,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[actorsmovies]    Script Date: 5/30/2022 10:14:22 AM ******/
+/****** Object:  Table [dbo].[actorsmovies]    Script Date: 6/1/2022 9:43:50 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +109,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[favourites]    Script Date: 5/30/2022 10:14:22 AM ******/
+/****** Object:  Table [dbo].[favourites]    Script Date: 6/1/2022 9:43:50 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +124,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genres]    Script Date: 5/30/2022 10:14:22 AM ******/
+/****** Object:  Table [dbo].[genres]    Script Date: 6/1/2022 9:43:50 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -138,7 +138,7 @@ CREATE TABLE [dbo].[genres](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genresmovies]    Script Date: 5/30/2022 10:14:22 AM ******/
+/****** Object:  Table [dbo].[genresmovies]    Script Date: 6/1/2022 9:43:50 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +153,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[movies]    Script Date: 5/30/2022 10:14:22 AM ******/
+/****** Object:  Table [dbo].[movies]    Script Date: 6/1/2022 9:43:50 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,7 +174,7 @@ CREATE TABLE [dbo].[movies](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[users]    Script Date: 5/30/2022 10:14:22 AM ******/
+/****** Object:  Table [dbo].[users]    Script Date: 6/1/2022 9:43:50 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -330,7 +330,189 @@ INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (66, N'Zach Galifianakis')
 GO
 INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (67, N'Chris Evans')
 GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (68, N'Morgan Freeman')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (69, N'Anthony Hopkins')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (70, N'Johnny Depp')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (71, N'Robin Williams')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (72, N'Charlie Chaplin')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (74, N'Clint Eastwood')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (75, N'Benedict Cumberbatch')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (76, N'Steve Buscemi')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (77, N'Christopher Walken')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (78, N'Gary Oldman')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (79, N'Ian McKellen')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (80, N'Woody Harrelson')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (81, N'Jack Nicholson')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (82, N'Michael Keaton')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (83, N'Patrick Stewart')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (84, N'Marlon Brando')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (85, N'Harrison Ford')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (86, N'Jeff Bridges')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (87, N'Bill Murray')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (88, N'Kurt Russell')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (89, N'Matt Damon')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (90, N'Ben Kingsley')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (91, N'Samuel L. Jackson')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (92, N'Matthew McConaughey')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (93, N'Joaquin Phoenix')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (94, N'Chris Pratt')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (97, N'Tom Holland')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (98, N'Don Cheadle')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (99, N'Daniel Radcliffe')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (100, N'Chadwick Boseman')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (101, N'Dave Bautista')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (102, N'Sebastian Stan')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (103, N'Paul Bettany')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (104, N'Letitia Wright')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (105, N'Benedict Wong')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (106, N'Steve Carell')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (107, N'Cameron Diaz')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (108, N'Idris Elba')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (109, N'Jack Black')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (110, N'Ben Affleck')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (111, N'Paul Rudd')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (112, N'Owen Wilson')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (113, N'Adam Driver')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (114, N'Daniel Craig')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (115, N'Mel Gibson')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (116, N'Brie Larson')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (117, N'Kevin Hart')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (118, N'Mark Hamill')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (119, N'Keira Knightley')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (120, N'Mike Myers')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (121, N'John Travolta')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (122, N'Colin Farrell')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (123, N'Michael Douglas')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (124, N'Tommy Lee Jones')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (125, N'Kristen Bell')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (126, N'Oscar Isaac')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (127, N'Henry Cavill')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (128, N'Jamie Foxx')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (129, N'Tobey Maguire')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (130, N'Chris Rock')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (131, N'Zendaya')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (132, N'Emma Thompson')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (133, N'Antonio Banderas')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (134, N'Gal Gadot')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (135, N'Willem Dafoe')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (136, N'Ezra Miller')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (137, N'Lisa Kudrow')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (138, N'Courteney Cox')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (139, N'Matt LeBlanc')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (140, N'Matthew Perry')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (141, N'David Schwimmer')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (142, N'Bryan Cranston')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (143, N'Anna Gunn')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (144, N'Aaron Paul')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (145, N'Dean Norris')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (146, N'Betsy Brandt')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (147, N'RJ Mitte')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (148, N'Giancarlo Esposito')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (149, N'Jonathan Banks')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (150, N'Bob Odenkirk')
+GO
 SET IDENTITY_INSERT [dbo].[actors] OFF
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (18, 2)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (21, 2)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (142, 22)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (143, 22)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (144, 22)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (145, 22)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (146, 22)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (147, 22)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (148, 22)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (149, 22)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (150, 22)
 GO
 SET IDENTITY_INSERT [dbo].[genres] ON 
 GO
@@ -572,6 +754,8 @@ INSERT [dbo].[movies] ([MovieId], [MovieName], [MovieOrSeries], [YearOfPublishin
 GO
 INSERT [dbo].[movies] ([MovieId], [MovieName], [MovieOrSeries], [YearOfPublishing], [Description], [Company], [Duration], [IMDB_Score], [NumberOfSeasons]) VALUES (21, N'Daredevil', N'Series', 2015, N'A blind lawyer by day, vigilante by night. Matt Murdock fights the crime of New York as Daredevil.', N'Netfix', 54, 8.6, 3)
 GO
+INSERT [dbo].[movies] ([MovieId], [MovieName], [MovieOrSeries], [YearOfPublishing], [Description], [Company], [Duration], [IMDB_Score], [NumberOfSeasons]) VALUES (22, N'Breaking bad', N'Series', 2008, N'When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family''s financial future at any cost as he enters the dangerous world of drugs and crime.', N'High Bridge Entertainment', 48, 9.5, 5)
+GO
 SET IDENTITY_INSERT [dbo].[movies] OFF
 GO
 SET IDENTITY_INSERT [dbo].[users] ON 
@@ -599,6 +783,8 @@ GO
 INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (13, N'asd', N'asd', N'asd@gmail.com', N'sewuyyy', N'67qJAbrL5wLXI5OksEaEbwh3yT6rbolPY/IHPW+aCTU=', N'WQ6QlfPgQE7orNu6C+iXeg==', 0)
 GO
 INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (14, N'ilian', N'Yanev', N'unufri333@gmail.com', N'ilkoba', N'Br8pHCLsmvRDUDL/tyaxpIgK3bsbX+jLfrKThapSyPc=', N'iff3lXdXCS1cmXpbObyT4A==', 0)
+GO
+INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (20, N'Ilko', N'Admina', N'admin@gmail.com', N'admin', N'Rt7XhHHTqGY1/cSN8GN/gGvunRlLsX3TEE3+DhA5nYI=', N'DX5MUeHEmXXm2x0BhlXvLA==', 1)
 GO
 SET IDENTITY_INSERT [dbo].[users] OFF
 GO

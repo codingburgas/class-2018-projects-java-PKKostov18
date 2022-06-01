@@ -85,7 +85,7 @@ public class MovieRepository {
 	
 	public List<Movie> getAllMoviesAndSeriesByActor(String actor) {
 		List<Movie> listOfMovies = new ArrayList<>();
-		String query = "SELECT * FROM movies JOIN actorsmovies ON movies.MovieId = actorsmovies.ActorId JOIN actors ON actors.ActorId = actorsmovies.ActorId WHERE actors.ActorName = ?";
+		String query = "SELECT * FROM movies JOIN actorsmovies ON movies.MovieId = actorsmovies.MovieId JOIN actors ON actors.ActorId = actorsmovies.ActorId WHERE actors.ActorName = ?";
 		try (Connection conn = DBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 					
