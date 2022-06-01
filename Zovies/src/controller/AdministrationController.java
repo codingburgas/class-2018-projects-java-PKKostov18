@@ -52,11 +52,15 @@ public class AdministrationController {
 					break;
 				}
 				case 8: {
-					
+					insertActors();
 					break;
 				}
 				case 9: {
-					
+					deleteActors();
+					break;
+				}
+				case 10: {
+					viewAllActors();
 					break;
 				}
 				case 21: {
@@ -104,6 +108,21 @@ public class AdministrationController {
 	private void deleteMovieOrSeries() {
 		MovieController deleteMovieOrSeries = new MovieController();
 		deleteMovieOrSeries.deleteMovieOrSeries();
+    }
+	
+	private void insertActors() {
+		MovieController insertActor = new MovieController();
+		insertActor.insertActor();
+    }
+	
+	private void deleteActors() {
+		MovieController deleteActors = new MovieController();
+		deleteActors.deleteActor();
+    }
+	
+	private void viewAllActors() {
+		MovieController actors = new MovieController();
+		actors.viewAllActors();;
     }
 	
 	private void backToMainMenu() {

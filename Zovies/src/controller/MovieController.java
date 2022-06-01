@@ -397,7 +397,7 @@ public class MovieController{
 			ConsoleUtils.write("Movie ID: "); 
 			ConsoleUtils.writeInteger(movie.getMovieId()); 
 			
-			ConsoleUtils.write(" Movie name: "); 
+			ConsoleUtils.write(" |  Movie name: "); 
 			ConsoleUtils.writeLine(movie.getMovieName());
 		});
 		ConsoleUtils.writeNewLine();
@@ -412,6 +412,76 @@ public class MovieController{
 		}
 		
 		movieService.deleteMovieOrSeriesById(id);
+		
+		ConsoleUtils.writeNewLine();
+		ConsoleUtils.writeLine("Successfully deleted!");
+		ConsoleUtils.write("Type 1 to back: "); int option = ConsoleUtils.readInteger();
+		ConsoleUtils.writeNewLine();
+		
+		while(option != 1) {
+			ConsoleUtils.writeNewLine();
+			ErrorMenu.invalidInputError();
+			ConsoleUtils.write("Type 1 to back: "); option = ConsoleUtils.readInteger();
+			ConsoleUtils.writeNewLine();
+		}
+		
+		backToAdminMenu();
+	}
+	
+	public void insertActor() {
+		
+		ConsoleUtils.writeNewLine();
+		ListMenu.insertActorMenu();
+		ConsoleUtils.writeNewLine();
+		
+		ConsoleUtils.write("Actor name: "); String actorName = ConsoleUtils.read();
+		
+			
+			actorService.insertActor(actorName);
+			
+			ConsoleUtils.writeLine("Successfully added the actor!");
+			ConsoleUtils.write("Type 1 to back: "); int option = ConsoleUtils.readInteger();
+			
+			while(option != 1) {
+				ErrorMenu.invalidInputError();
+				ConsoleUtils.write("Type 1 to back: "); option = ConsoleUtils.readInteger();
+			}
+			
+			backToAdminMenu();
+		} 			
+		
+	public void deleteActor() {
+		
+		ConsoleUtils.writeNewLine();
+		ListMenu.deleteMovieOrSeriesMenu();
+		ConsoleUtils.writeNewLine();
+		
+		List<Actor> actors = actorService.getAllActorNames();
+		List<Integer> getAllIds = actors.stream().map(id -> id.getActorId()).collect(Collectors.toList());
+		
+		ConsoleUtils.writeNewLine();
+		
+		actors.stream().forEach(movie -> {
+			
+			ConsoleUtils.write("Actor ID: "); 
+			ConsoleUtils.writeInteger(movie.getActorId()); 
+			
+			ConsoleUtils.write(" |  Actor name: "); 
+			ConsoleUtils.writeLine(movie.getActorName());
+		});
+		
+		ConsoleUtils.writeNewLine();
+		
+		ConsoleUtils.write("Type the id of the actor you want to delete: "); int id = ConsoleUtils.readInteger();
+		
+		while(!getAllIds.contains(id)) {
+			ConsoleUtils.writeNewLine();
+			ErrorMenu.invalidDataError();
+			ConsoleUtils.write("Type the id of the actor you want to delete: "); id = ConsoleUtils.readInteger();
+			ConsoleUtils.writeNewLine();
+		}
+		
+		actorService.deleteActor(id);
 		
 		ConsoleUtils.writeNewLine();
 		ConsoleUtils.writeLine("Successfully deleted!");

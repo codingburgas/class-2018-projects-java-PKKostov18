@@ -49,6 +49,30 @@ public class ActorRepository {
 		return actor;
 	}
 	
+	public void insertActor(String actorName) {
+		String query1 = "INSERT INTO actors (ActorName) VALUES (?)";
+		try (Connection conn = DBConnection.getConnection(); 
+				PreparedStatement pst1 = conn.prepareStatement(query1)) {
+			
+			pst1.setString(1, actorName);
+							
+			int rs = pst1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
+	public void deleteActorById(int actorId) {
+		String query1 = "DELETE FROM actors WHERE ActorId = ?";
+		try (Connection conn = DBConnection.getConnection(); 
+				PreparedStatement pst1 = conn.prepareStatement(query1)) {
+			
+			pst1.setInt(1, actorId);
+				
+			int rs = pst1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }

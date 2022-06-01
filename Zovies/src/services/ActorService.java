@@ -34,4 +34,12 @@ public class ActorService {
 		List<Actor> actors = actorRepository.getAllActors();
 		return actors;
 	}
+	
+	public void insertActor(String actorName) {
+		actorRepository.insertActor(actorName);
+	}
+	
+	public void deleteActor(int actorId) {
+		actorRepository.deleteActorById(actorId);
+	}
 }

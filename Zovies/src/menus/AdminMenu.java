@@ -26,11 +26,11 @@ public class AdminMenu {
 		ConsoleUtils.writeLine("|                       6. Add new movie or series                 |");
 		ConsoleUtils.writeLine("|                       7. Delete movie or series                  |");
 		ConsoleUtils.writeLine("|                       8. Add actor                               |");
-		ConsoleUtils.writeLine("|                       9. Edit actor                              |");
-		ConsoleUtils.writeLine("|                       10. Delete actor                           |");
+		ConsoleUtils.writeLine("|                       9. Delete actor                            |");
+		ConsoleUtils.writeLine("|                       10. View all actors                        |");
 		ConsoleUtils.writeLine("|                       11. Add genre                              |");
-		ConsoleUtils.writeLine("|                       12. Edit genre                             |");
-		ConsoleUtils.writeLine("|                       13. Delete genre                           |");
+		ConsoleUtils.writeLine("|                       12. Delete genre                           |");
+		ConsoleUtils.writeLine("|                       13. View all genres                        |");
 		ConsoleUtils.writeLine("|                                                                  |");
 		ConsoleUtils.writeLine("|        __________________________________________________        |");
 		ConsoleUtils.writeLine("|                                                                  |");

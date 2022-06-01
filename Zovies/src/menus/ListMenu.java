@@ -53,6 +53,13 @@ public static void allActorsMenu() {
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 	
+	public static void insertActorMenu() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                           Add actor name                         |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
 	public static void deleteMovieOrSeriesMenu() {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
