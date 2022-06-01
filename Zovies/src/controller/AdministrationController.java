@@ -48,7 +48,7 @@ public class AdministrationController {
 					break;
 				}
 				case 7: {
-					
+					deleteMovieOrSeries();
 					break;
 				}
 				case 8: {
@@ -99,6 +99,11 @@ public class AdministrationController {
 	private void insertMovieOrSeries() {
 		MovieController insertMovieOrSeries = new MovieController();
 		insertMovieOrSeries.insertMovieOrSeries();
+    }
+	
+	private void deleteMovieOrSeries() {
+		MovieController deleteMovieOrSeries = new MovieController();
+		deleteMovieOrSeries.deleteMovieOrSeries();
     }
 	
 	private void backToMainMenu() {

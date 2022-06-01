@@ -15,6 +15,10 @@ public class ConsoleUtils {
         System.out.print(line);
     }
     
+    public static void writeInteger(int number) {
+        System.out.print(number);
+    }
+    
     public static void writeNewLine() {    
         System.out.println();
     }

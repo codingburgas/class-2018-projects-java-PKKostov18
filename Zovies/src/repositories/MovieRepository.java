@@ -23,6 +23,25 @@ public class MovieRepository {
 		return MovieRepository.instance;
 	}
 	
+	public List<Movie> getAllMoviesAndSeries() {
+		List<Movie> listOfMovies = new ArrayList<>();
+		String query = "SELECT * FROM movies";
+		try (Connection conn = DBConnection.getConnection();
+				PreparedStatement ps = conn.prepareStatement(query);
+				ResultSet resultSet = ps.executeQuery()) {
+
+			while (resultSet.next()) {
+				Movie movie = mapToMovie(resultSet);
+				listOfMovies.add(movie);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listOfMovies;
+	}
+	
 	public List<Movie> getAllMovies() {
 		List<Movie> listOfMovies = new ArrayList<>();
 		String query = "SELECT * FROM movies WHERE MovieOrSeries = 'Movie'";
@@ -73,6 +92,19 @@ public class MovieRepository {
 			pst1.setString(5, company);
 			pst1.setInt(6, duration);
 			pst1.setDouble(7, imdbScore);
+				
+			int rs = pst1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteMovieOrSeriesById(int movieId) {
+		String query1 = "DELETE FROM movies WHERE MovieId = ?";
+		try (Connection conn = DBConnection.getConnection(); 
+				PreparedStatement pst1 = conn.prepareStatement(query1)) {
+			
+			pst1.setInt(1, movieId);
 				
 			int rs = pst1.executeUpdate();
 		} catch (SQLException e) {

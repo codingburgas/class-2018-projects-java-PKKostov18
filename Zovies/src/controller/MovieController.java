@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import menus.*;
 import models.Actor;
@@ -379,6 +380,52 @@ public class MovieController{
 			
 			backToAdminMenu();
 		}
+	}
+	
+	public void deleteMovieOrSeries() {
+		
+		ConsoleUtils.writeNewLine();
+		ListMenu.deleteMovieOrSeriesMenu();
+		ConsoleUtils.writeNewLine();
+		
+		List<Movie> moviesAndSeries = movieService.getAllMoviesAndSeries();
+		List<Integer> getAllIds = moviesAndSeries.stream().map(id -> id.getMovieId()).collect(Collectors.toList());
+		
+		ConsoleUtils.writeNewLine();
+		moviesAndSeries.stream().forEach(movie -> {
+			
+			ConsoleUtils.write("Movie ID: "); 
+			ConsoleUtils.writeInteger(movie.getMovieId()); 
+			
+			ConsoleUtils.write(" Movie name: "); 
+			ConsoleUtils.writeLine(movie.getMovieName());
+		});
+		ConsoleUtils.writeNewLine();
+		
+		ConsoleUtils.write("Type the id of the movie you want to delete: "); int id = ConsoleUtils.readInteger();
+		
+		while(!getAllIds.contains(id)) {
+			ConsoleUtils.writeNewLine();
+			ErrorMenu.invalidDataError();
+			ConsoleUtils.write("Type the id of the movie you want to delete: "); id = ConsoleUtils.readInteger();
+			ConsoleUtils.writeNewLine();
+		}
+		
+		movieService.deleteMovieOrSeriesById(id);
+		
+		ConsoleUtils.writeNewLine();
+		ConsoleUtils.writeLine("Successfully deleted!");
+		ConsoleUtils.write("Type 1 to back: "); int option = ConsoleUtils.readInteger();
+		ConsoleUtils.writeNewLine();
+		
+		while(option != 1) {
+			ConsoleUtils.writeNewLine();
+			ErrorMenu.invalidInputError();
+			ConsoleUtils.write("Type 1 to back: "); option = ConsoleUtils.readInteger();
+			ConsoleUtils.writeNewLine();
+		}
+		
+		backToAdminMenu();
 	}
 	
 	public void viewAllMoviesOrSeriesByGenre() {

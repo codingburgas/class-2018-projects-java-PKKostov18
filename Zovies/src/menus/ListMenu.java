@@ -49,7 +49,14 @@ public static void allActorsMenu() {
 	public static void insertMovieOrSeriesMenu() {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
-		ConsoleUtils.writeLine("|                       Add a movie or series                      |");
+		ConsoleUtils.writeLine("|                        Add movie or series                       |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
+	public static void deleteMovieOrSeriesMenu() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                      Delete movie or series                      |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 }

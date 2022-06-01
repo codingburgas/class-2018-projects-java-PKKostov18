@@ -26,6 +26,11 @@ public class MovieService {
         return MovieService.instance;
     }
 	
+	public List<Movie> getAllMoviesAndSeries() {
+		List<Movie> moviesAndSeries = movieRepository.getAllMoviesAndSeries();
+		return moviesAndSeries;
+	}
+	
 	public List<Movie> getAllMovieNames() {
 		
 		List<Movie> movies = movieRepository.getAllMovies();	
@@ -87,5 +92,9 @@ public class MovieService {
 	
 	public void insertSeries(String movieName, String movieOrSeries, int yearOfPublishing, String desctiption, String company, int duration, double imdbScore, int numberOfSeasons) {
 		movieRepository.insertSeries(movieName, movieOrSeries, yearOfPublishing, desctiption, company, duration, imdbScore, numberOfSeasons);
+	}
+	
+	public void deleteMovieOrSeriesById(int movieId) {
+		movieRepository.deleteMovieOrSeriesById(movieId);
 	}
 }
