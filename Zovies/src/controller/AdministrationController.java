@@ -59,7 +59,7 @@ public class AdministrationController {
 					
 					break;
 				}
-				case 22: {
+				case 21: {
 					authenticationService.destroySession();
 					backToMainMenu();
 					break;

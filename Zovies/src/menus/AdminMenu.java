@@ -41,11 +41,10 @@ public class AdminMenu {
 		ConsoleUtils.writeLine("|                       15. Edit user account                      |");
 		ConsoleUtils.writeLine("|                       16. Delete personal account                |");
 		ConsoleUtils.writeLine("|                       17. Delete user account                    |");
-		ConsoleUtils.writeLine("|                       18. Delete movie                           |");
-		ConsoleUtils.writeLine("|                       19. Delete series                          |");
-		ConsoleUtils.writeLine("|                       20. View all users                         |");
-		ConsoleUtils.writeLine("|                       21. View all admins                        |");
-		ConsoleUtils.writeLine("|                       22. LOG OUT                                |");
+		ConsoleUtils.writeLine("|                       18. Make a user admin                      |");
+		ConsoleUtils.writeLine("|                       19. View all users                         |");
+		ConsoleUtils.writeLine("|                       20. View all admins                        |");
+		ConsoleUtils.writeLine("|                       21. LOG OUT                                |");
 		ConsoleUtils.writeLine("|                                                                  |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");		
 		
