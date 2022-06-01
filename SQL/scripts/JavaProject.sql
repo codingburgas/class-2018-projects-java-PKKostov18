@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [JavaProject]    Script Date: 6/1/2022 9:43:50 AM ******/
+/****** Object:  Database [JavaProject]    Script Date: 6/1/2022 12:47:22 PM ******/
 CREATE DATABASE [JavaProject]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [JavaProject] SET QUERY_STORE = OFF
 GO
 USE [JavaProject]
 GO
-/****** Object:  Table [dbo].[actors]    Script Date: 6/1/2022 9:43:50 AM ******/
+/****** Object:  Table [dbo].[actors]    Script Date: 6/1/2022 12:47:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +94,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[actorsmovies]    Script Date: 6/1/2022 9:43:50 AM ******/
+/****** Object:  Table [dbo].[actorsmovies]    Script Date: 6/1/2022 12:47:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +109,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[favourites]    Script Date: 6/1/2022 9:43:50 AM ******/
+/****** Object:  Table [dbo].[favourites]    Script Date: 6/1/2022 12:47:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +124,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genres]    Script Date: 6/1/2022 9:43:50 AM ******/
+/****** Object:  Table [dbo].[genres]    Script Date: 6/1/2022 12:47:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -138,7 +138,7 @@ CREATE TABLE [dbo].[genres](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genresmovies]    Script Date: 6/1/2022 9:43:50 AM ******/
+/****** Object:  Table [dbo].[genresmovies]    Script Date: 6/1/2022 12:47:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +153,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[movies]    Script Date: 6/1/2022 9:43:50 AM ******/
+/****** Object:  Table [dbo].[movies]    Script Date: 6/1/2022 12:47:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,7 +174,7 @@ CREATE TABLE [dbo].[movies](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[users]    Script Date: 6/1/2022 9:43:50 AM ******/
+/****** Object:  Table [dbo].[users]    Script Date: 6/1/2022 12:47:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -490,11 +490,127 @@ INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (149, N'Jonathan Banks')
 GO
 INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (150, N'Bob Odenkirk')
 GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (151, N'Mark Ruffalo')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (152, N'Jeremy Renner')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (153, N'Elijah Wood')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (154, N'
+Viggo Mortensen')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (155, N'Elizabeth Olsen')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (156, N'
+Jared Leto')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (157, N'Tom Hardy')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (158, N'
+Cillian Murphy')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (159, N'
+Tom Hiddleston')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (160, N'Charlie Cox')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (161, N'
+Deborah Ann Woll')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (162, N'Elden Henson')
+GO
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (163, N'
+Jon Bernthal')
+GO
 SET IDENTITY_INSERT [dbo].[actors] OFF
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (7, 15)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (12, 16)
 GO
 INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (18, 2)
 GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (19, 15)
+GO
 INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (21, 2)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (31, 6)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (34, 13)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (39, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (39, 18)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (39, 19)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (39, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (44, 6)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (51, 3)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (53, 7)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (54, 5)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (55, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (55, 18)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (55, 19)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (55, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (57, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (67, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (67, 18)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (67, 19)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (67, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (68, 1)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (68, 6)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (74, 12)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (75, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (75, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (79, 8)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (79, 11)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (85, 17)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (90, 7)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (97, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (97, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (101, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (101, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (103, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (103, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (105, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (105, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (116, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (116, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (118, 17)
 GO
 INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (142, 22)
 GO
@@ -513,6 +629,54 @@ GO
 INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (149, 22)
 GO
 INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (150, 22)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (151, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (151, 18)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (151, 19)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (151, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (152, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (152, 18)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (152, 19)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (152, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (153, 8)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (153, 11)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (154, 8)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (154, 11)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (155, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (155, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (156, 15)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (157, 16)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (158, 16)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (159, 4)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (159, 18)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (159, 20)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (160, 21)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (161, 21)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (162, 21)
+GO
+INSERT [dbo].[actorsmovies] ([ActorId], [MovieId]) VALUES (163, 21)
 GO
 SET IDENTITY_INSERT [dbo].[genres] ON 
 GO
@@ -570,6 +734,8 @@ INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (26, N'Superhero')
 GO
 INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (27, N'Dark Comedy')
 GO
+INSERT [dbo].[genres] ([GenreId], [Genre]) VALUES (28, N'Tragedy')
+GO
 SET IDENTITY_INSERT [dbo].[genres] OFF
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (1, 3)
@@ -598,6 +764,8 @@ INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (1, 20)
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (1, 21)
 GO
+INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (1, 23)
+GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (3, 1)
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (3, 2)
@@ -617,6 +785,10 @@ GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (8, 15)
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (8, 16)
+GO
+INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (8, 22)
+GO
+INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (8, 23)
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (9, 12)
 GO
@@ -641,6 +813,8 @@ GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (10, 19)
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (10, 20)
+GO
+INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (10, 23)
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (11, 7)
 GO
@@ -700,9 +874,13 @@ INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (20, 15)
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (20, 16)
 GO
+INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (20, 22)
+GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (24, 3)
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (25, 7)
+GO
+INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (25, 23)
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (26, 6)
 GO
@@ -715,6 +893,10 @@ GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (26, 21)
 GO
 INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (27, 15)
+GO
+INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (27, 22)
+GO
+INSERT [dbo].[genresmovies] ([GenreId], [MovieId]) VALUES (28, 22)
 GO
 SET IDENTITY_INSERT [dbo].[movies] ON 
 GO
@@ -755,6 +937,9 @@ GO
 INSERT [dbo].[movies] ([MovieId], [MovieName], [MovieOrSeries], [YearOfPublishing], [Description], [Company], [Duration], [IMDB_Score], [NumberOfSeasons]) VALUES (21, N'Daredevil', N'Series', 2015, N'A blind lawyer by day, vigilante by night. Matt Murdock fights the crime of New York as Daredevil.', N'Netfix', 54, 8.6, 3)
 GO
 INSERT [dbo].[movies] ([MovieId], [MovieName], [MovieOrSeries], [YearOfPublishing], [Description], [Company], [Duration], [IMDB_Score], [NumberOfSeasons]) VALUES (22, N'Breaking bad', N'Series', 2008, N'When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family''s financial future at any cost as he enters the dangerous world of drugs and crime.', N'High Bridge Entertainment', 48, 9.5, 5)
+GO
+INSERT [dbo].[movies] ([MovieId], [MovieName], [MovieOrSeries], [YearOfPublishing], [Description], [Company], [Duration], [IMDB_Score], [NumberOfSeasons]) VALUES (23, N'Rambo: First Blood', N'Movie', 1982, N'When former Green Beret John Rambo is harassed by local law enforcement and arrested for vagrancy, the Vietnam vet snaps, runs for the hills and rat-a-tat-tats his way into the action-movie hall of fame. Hounded by a relentless sheriff, Rambo employs heavy-handed guerilla tactics to shake the cops off his tail.', N'
+Carolco Pictures', 93, 7.7, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[movies] OFF
 GO
