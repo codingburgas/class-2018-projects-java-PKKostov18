@@ -25,7 +25,7 @@ public class UserRepository {
 	
 	public List<User> getAllUsers() {
 		List<User> listOfUsers = new ArrayList<>();
-		String query = "SELECT * FROM users;";
+		String query = "SELECT * FROM users WHERE Admin = '0';";
 		try (Connection conn = DBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query);
 				ResultSet resultSet = ps.executeQuery()) {
@@ -42,6 +42,25 @@ public class UserRepository {
 		return listOfUsers;
 	}
 
+	public List<User> getAllAdmins() {
+		List<User> listOfUsers = new ArrayList<>();
+		String query = "SELECT * FROM users WHERE Admin = '1';";
+		try (Connection conn = DBConnection.getConnection();
+				PreparedStatement ps = conn.prepareStatement(query);
+				ResultSet resultSet = ps.executeQuery()) {
+
+			while (resultSet.next()) {
+				User user = mapToUser(resultSet);
+				listOfUsers.add(user);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listOfUsers;
+	}
+	
 	public User getRegisteredUser(String username) {
 		User user = null;
 		String query = "SELECT * FROM users WHERE Username = ?";

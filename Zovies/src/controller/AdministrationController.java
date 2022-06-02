@@ -1,5 +1,6 @@
 package controller;
 
+
 import menus.AdminMenu;
 import menus.ErrorMenu;
 import services.AuthenticationService;
@@ -63,6 +64,26 @@ public class AdministrationController {
 					viewAllActors();
 					break;
 				}
+				case 11: {
+					insertGenres();
+					break;
+				}
+				case 12: {
+					deleteGenres();
+					break;
+				}
+				case 13: {
+					viewAllGenres();
+					break;
+				}
+				case 19: {
+					viewAllUsers();
+					break;
+				}
+				case 20: {
+					viewAllAdmins();
+					break;
+				}
 				case 21: {
 					authenticationService.destroySession();
 					backToMainMenu();
@@ -123,6 +144,31 @@ public class AdministrationController {
 	private void viewAllActors() {
 		MovieController actors = new MovieController();
 		actors.viewAllActors();;
+    }
+	
+	private void viewAllGenres() {
+		GenreController genres = new GenreController();
+		genres.viewAllGenres();;
+    }
+	
+	private void deleteGenres() {
+		GenreController deleteGenres = new GenreController();
+		deleteGenres.deleteGenre();;
+    }
+	
+	private void insertGenres() {
+		GenreController insertGenre = new GenreController();
+		insertGenre.insertGenre();
+    }
+	
+	private void viewAllUsers() {
+		UserController users = new UserController();
+		users.viewAllUsers();
+    }
+	
+	private void viewAllAdmins() {
+		UserController admins = new UserController();
+		admins.viewAllAdmins();
     }
 	
 	private void backToMainMenu() {

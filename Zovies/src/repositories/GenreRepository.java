@@ -42,6 +42,32 @@ public class GenreRepository {
 		return listOfGenres;
 	}
 	
+	public void insertGenre(String genre) {
+		String query1 = "INSERT INTO genres (Genre) VALUES (?)";
+		try (Connection conn = DBConnection.getConnection(); 
+				PreparedStatement pst1 = conn.prepareStatement(query1)) {
+			
+			pst1.setString(1, genre);
+							
+			int rs = pst1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteGenreById(int genreId) {
+		String query1 = "DELETE FROM genres WHERE GenreId = ?";
+		try (Connection conn = DBConnection.getConnection(); 
+				PreparedStatement pst1 = conn.prepareStatement(query1)) {
+			
+			pst1.setInt(1, genreId);
+				
+			int rs = pst1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private Genre mapToGenre(ResultSet resultSet) throws SQLException {
 		int genreId = resultSet.getInt("GenreId");
 		String genreType = resultSet.getString("Genre");

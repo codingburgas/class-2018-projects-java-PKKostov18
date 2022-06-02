@@ -18,10 +18,17 @@ public class ListMenu {
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 	
-public static void allActorsMenu() {
+	public static void allActorsMenu() {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		ConsoleUtils.writeLine("|                   List of all uploaded actors                    |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
+	public static void allGenresMenu() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                   List of all uploaded genres                    |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 	
@@ -64,6 +71,13 @@ public static void allActorsMenu() {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 		ConsoleUtils.writeLine("|                      Delete movie or series                      |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
+	public static void insertGenreMenu() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                           Add genre name                         |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 }

@@ -27,11 +27,17 @@ public class GenreService {
 	public List<Genre> getAllGenres() {
 		List<Genre> genres = genreRepository.getAllGenres();
 		
-		ConsoleUtils.writeLine("Movie names:");
-		ConsoleUtils.writeNewLine();
-		genres.stream().forEach(genre -> System.out.println(genre.getGenre()));
-		ConsoleUtils.writeNewLine();
+
 		
 		return genres;
 	}
+	
+	public void insertGenre(String genre) {
+		genreRepository.insertGenre(genre);
+	}
+	
+	public void deleteActor(int genreId) {
+		genreRepository.deleteGenreById(genreId);;
+	}
+	
 }
