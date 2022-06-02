@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [JavaProject]    Script Date: 6/1/2022 12:47:22 PM ******/
+/****** Object:  Database [JavaProject]    Script Date: 2.6.2022 г. 18:52:37 ******/
 CREATE DATABASE [JavaProject]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [JavaProject] SET QUERY_STORE = OFF
 GO
 USE [JavaProject]
 GO
-/****** Object:  Table [dbo].[actors]    Script Date: 6/1/2022 12:47:22 PM ******/
+/****** Object:  Table [dbo].[actors]    Script Date: 2.6.2022 г. 18:52:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +94,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[actorsmovies]    Script Date: 6/1/2022 12:47:22 PM ******/
+/****** Object:  Table [dbo].[actorsmovies]    Script Date: 2.6.2022 г. 18:52:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +109,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[favourites]    Script Date: 6/1/2022 12:47:22 PM ******/
+/****** Object:  Table [dbo].[favourites]    Script Date: 2.6.2022 г. 18:52:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +124,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genres]    Script Date: 6/1/2022 12:47:22 PM ******/
+/****** Object:  Table [dbo].[genres]    Script Date: 2.6.2022 г. 18:52:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -138,7 +138,7 @@ CREATE TABLE [dbo].[genres](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genresmovies]    Script Date: 6/1/2022 12:47:22 PM ******/
+/****** Object:  Table [dbo].[genresmovies]    Script Date: 2.6.2022 г. 18:52:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +153,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[movies]    Script Date: 6/1/2022 12:47:22 PM ******/
+/****** Object:  Table [dbo].[movies]    Script Date: 2.6.2022 г. 18:52:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,7 +174,7 @@ CREATE TABLE [dbo].[movies](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[users]    Script Date: 6/1/2022 12:47:22 PM ******/
+/****** Object:  Table [dbo].[users]    Script Date: 2.6.2022 г. 18:52:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -284,7 +284,7 @@ INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (43, N'Rachel McAdams')
 GO
 INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (44, N'Christian Bale')
 GO
-INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (45, N'Zoe Salda�a')
+INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (45, N'Zoe Saldana')
 GO
 INSERT [dbo].[actors] ([ActorId], [ActorName]) VALUES (46, N'Angelina Jolie')
 GO
@@ -973,11 +973,15 @@ ALTER TABLE [dbo].[users] ADD  CONSTRAINT [DF_users_Admin]  DEFAULT ((0)) FOR [A
 GO
 ALTER TABLE [dbo].[actorsmovies]  WITH CHECK ADD  CONSTRAINT [FK_ActorsActorsMovies] FOREIGN KEY([ActorId])
 REFERENCES [dbo].[actors] ([ActorId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[actorsmovies] CHECK CONSTRAINT [FK_ActorsActorsMovies]
 GO
 ALTER TABLE [dbo].[actorsmovies]  WITH CHECK ADD  CONSTRAINT [FK_MoviesActorsMovies] FOREIGN KEY([MovieId])
 REFERENCES [dbo].[movies] ([MovieId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[actorsmovies] CHECK CONSTRAINT [FK_MoviesActorsMovies]
 GO
@@ -993,11 +997,15 @@ ALTER TABLE [dbo].[favourites] CHECK CONSTRAINT [FK_FavouritesUsers]
 GO
 ALTER TABLE [dbo].[genresmovies]  WITH CHECK ADD  CONSTRAINT [FK_GenresGenresMovies] FOREIGN KEY([GenreId])
 REFERENCES [dbo].[genres] ([GenreId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[genresmovies] CHECK CONSTRAINT [FK_GenresGenresMovies]
 GO
 ALTER TABLE [dbo].[genresmovies]  WITH CHECK ADD  CONSTRAINT [FK_MoviesGenresMovies] FOREIGN KEY([MovieId])
 REFERENCES [dbo].[movies] ([MovieId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[genresmovies] CHECK CONSTRAINT [FK_MoviesGenresMovies]
 GO
