@@ -76,6 +76,26 @@ public class AdministrationController {
 					viewAllGenres();
 					break;
 				}
+				case 14: {
+					
+					break;
+				}
+				case 15: {
+	
+					break;
+				}
+				case 16: {
+					deletePersonalAccountById();
+					break;
+				}
+				case 17: {
+					deleteUser();
+					break;
+				}
+				case 18: {
+					makeUserAdmin();
+					break;
+				}
 				case 19: {
 					viewAllUsers();
 					break;
@@ -148,12 +168,12 @@ public class AdministrationController {
 	
 	private void viewAllGenres() {
 		GenreController genres = new GenreController();
-		genres.viewAllGenres();;
+		genres.viewAllGenres();
     }
 	
 	private void deleteGenres() {
 		GenreController deleteGenres = new GenreController();
-		deleteGenres.deleteGenre();;
+		deleteGenres.deleteGenre();
     }
 	
 	private void insertGenres() {
@@ -169,6 +189,21 @@ public class AdministrationController {
 	private void viewAllAdmins() {
 		UserController admins = new UserController();
 		admins.viewAllAdmins();
+    }
+	
+	private void deleteUser() {
+		UserController users = new UserController();
+		users.deleteUserById();
+    }
+	
+	private void makeUserAdmin() {
+		UserController user = new UserController();
+		user.makeUserAdminById();
+    }
+	
+	private void deletePersonalAccountById() {
+		UserController user = new UserController();
+		user.deletePersonalAccountById();
     }
 	
 	private void backToMainMenu() {

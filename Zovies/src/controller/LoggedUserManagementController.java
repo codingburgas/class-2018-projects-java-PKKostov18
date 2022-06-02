@@ -51,7 +51,7 @@ public class LoggedUserManagementController {
 					break;
 				}
 				case 8: {
-					
+					deletePersonalAccountById();
 					break;
 				}
 				case 9: {
@@ -100,5 +100,10 @@ public class LoggedUserManagementController {
 	private void viewAllActors() {
 		MovieController actors = new MovieController();
 		actors.viewAllActors();;
+    }
+	
+	private void deletePersonalAccountById() {
+		UserController user = new UserController();
+		user.deletePersonalAccountById();
     }
 }

@@ -112,6 +112,32 @@ public class UserRepository {
 		return true;
 	}
 	
+	public void deleteUserById(int userId) {
+		String query1 = "DELETE FROM users WHERE UserId = ?";
+		try (Connection conn = DBConnection.getConnection();
+			PreparedStatement pst1 = conn.prepareStatement(query1)) {
+	
+			pst1.setInt(1, userId);
+	
+			int rs = pst1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void makeUserAdminById(int userId) {
+		String query1 = "UPDATE users SET Admin = 1 WHERE UserId = ?";
+		try (Connection conn = DBConnection.getConnection();
+			PreparedStatement pst1 = conn.prepareStatement(query1)) {
+	
+			pst1.setInt(1, userId);
+	
+			int rs = pst1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private User mapToUser(ResultSet resultSet) throws SQLException {
 		int userId = resultSet.getInt("UserId");
 		String firstName = resultSet.getString("FirstName");

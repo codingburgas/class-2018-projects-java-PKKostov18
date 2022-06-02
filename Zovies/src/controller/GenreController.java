@@ -5,13 +5,8 @@ import java.util.stream.Collectors;
 
 import menus.ErrorMenu;
 import menus.ListMenu;
-import models.Actor;
 import models.Genre;
-import services.ActorService;
-import services.AuthenticationService;
-import services.FavouriteService;
 import services.GenreService;
-import services.MovieService;
 import utils.ConsoleUtils;
 
 public class GenreController {

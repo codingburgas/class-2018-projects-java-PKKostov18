@@ -4,7 +4,6 @@ import java.util.List;
 
 import models.Genre;
 import repositories.GenreRepository;
-import utils.ConsoleUtils;
 
 public class GenreService {
 	

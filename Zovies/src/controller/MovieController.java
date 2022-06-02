@@ -6,12 +6,12 @@ import java.util.stream.Collectors;
 import menus.*;
 import models.Actor;
 import models.Movie;
+import models.User;
 import utils.ConsoleUtils;
 import services.ActorService;
 import services.AuthenticationService;
 import services.FavouriteService;
 import services.MovieService;
-import services.UserService;
 
 public class MovieController{
 	
@@ -93,11 +93,27 @@ public class MovieController{
 							ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
 						}
 					}
-					backToUserMenu();
+					
+					User user = authService.getLoggedUser();
+					
+					if(user.getAdmin()) {
+						backToAdminMenu();
+					}
+					else {
+						backToUserMenu();
+					}
 					break;
 				}
 				case 3: {
-					backToUserMenu();
+					
+					User user = authService.getLoggedUser();
+					
+					if(user.getAdmin()) {
+						backToAdminMenu();
+					}
+					else {
+						backToUserMenu();
+					}
 					break;
 				}
 				default:
@@ -170,11 +186,27 @@ public class MovieController{
 							ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
 						}
 					}
-					backToUserMenu();
+
+					User user = authService.getLoggedUser();
+					
+					if(user.getAdmin()) {
+						backToAdminMenu();
+					}
+					else {
+						backToUserMenu();
+					}
 					break;
 				}
 				case 3: {
-					backToUserMenu();
+
+					User user = authService.getLoggedUser();
+					
+					if(user.getAdmin()) {
+						backToAdminMenu();
+					}
+					else {
+						backToUserMenu();
+					}
 					break;
 				}
 				default:
@@ -200,7 +232,15 @@ public class MovieController{
 		while(true) {
 			switch (option) {
 				case 1: {
-					backToUserMenu();
+
+					User user = authService.getLoggedUser();
+					
+					if(user.getAdmin()) {
+						backToAdminMenu();
+					}
+					else {
+						backToUserMenu();
+					}
 					break;
 				}
 				
@@ -263,7 +303,15 @@ public class MovieController{
 				if(option == 1) {
 					viewFavourites();
 				}else {
-					backToUserMenu();
+
+					User user = authService.getLoggedUser();
+					
+					if(user.getAdmin()) {
+						backToAdminMenu();
+					}
+					else {
+						backToUserMenu();
+					}
 				}
 			}
 	
@@ -280,21 +328,27 @@ public class MovieController{
 			while(option != 1) {
 				ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
 			} 
-			backToUserMenu();
+
+			User user = authService.getLoggedUser();
+			
+			if(user.getAdmin()) {
+				backToAdminMenu();
+			}
+			else {
+				backToUserMenu();
+			}
 		}else {
-			backToUserMenu();
+
+			User user = authService.getLoggedUser();
+			
+			if(user.getAdmin()) {
+				backToAdminMenu();
+			}
+			else {
+				backToUserMenu();
+			}
 		}
 	}
-	
-	private void backToUserMenu() {
-		LoggedUserManagementController loggedUserManagementController = new LoggedUserManagementController();
-		loggedUserManagementController.run();
-    }
-	
-	private void backToAdminMenu() {
-		AdministrationController administrationController = new AdministrationController();
-		administrationController.run();
-    }
 	
 	public void insertMovieOrSeries() {
 		
@@ -307,14 +361,9 @@ public class MovieController{
 		
 		while(!movieOrSeries.equals("Movie") && !movieOrSeries.equals("Series")) {
 			ErrorMenu.invalidDataError(); 
-			
-			System.out.println(movieOrSeries);
-			
 			ConsoleUtils.write("Movie or Series: "); movieOrSeries = ConsoleUtils.read();
 		}
 		
-		System.out.println(movieOrSeries);
-
 		if(movieOrSeries.equals("Movie")) {
 			ConsoleUtils.write("Year of publishing: "); int yearOfPublishing = ConsoleUtils.readInteger();
 
@@ -567,11 +616,27 @@ public class MovieController{
 							ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
 						}
 					}
-					backToUserMenu();
+
+					User user = authService.getLoggedUser();
+					
+					if(user.getAdmin()) {
+						backToAdminMenu();
+					}
+					else {
+						backToUserMenu();
+					}
 					break;
 				}
 				case 3: {
-					backToUserMenu();
+
+					User user = authService.getLoggedUser();
+					
+					if(user.getAdmin()) {
+						backToAdminMenu();
+					}
+					else {
+						backToUserMenu();
+					}
 					break;
 				}
 				default:
@@ -651,11 +716,27 @@ public class MovieController{
 							ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
 						}
 					}
-					backToUserMenu();
+
+					User user = authService.getLoggedUser();
+					
+					if(user.getAdmin()) {
+						backToAdminMenu();
+					}
+					else {
+						backToUserMenu();
+					}
 					break;
 				}
 				case 3: {
-					backToUserMenu();
+
+					User user = authService.getLoggedUser();
+					
+					if(user.getAdmin()) {
+						backToAdminMenu();
+					}
+					else {
+						backToUserMenu();
+					}
 					break;
 				}
 				default:
@@ -702,5 +783,15 @@ public class MovieController{
 		ConsoleUtils.writeLine("                                                   IMDB_score: " + this.movie.getIMDB_score());
 		ConsoleUtils.writeLine("____________________________________________________________________________________________________________________________________");
 		ConsoleUtils.writeNewLine();
+    }
+
+	private void backToUserMenu() {
+		LoggedUserManagementController loggedUserManagementController = new LoggedUserManagementController();
+		loggedUserManagementController.run();
+    }
+	
+	private void backToAdminMenu() {
+		AdministrationController administrationController = new AdministrationController();
+		administrationController.run();
     }
 }

@@ -3,10 +3,7 @@ package services;
 import java.util.List;
 
 import models.Movie;
-import repositories.ActorRepository;
 import repositories.MovieRepository;
-import utils.ConsoleUtils;
-import utils.PasswordManager;
 
 public class MovieService {
 	

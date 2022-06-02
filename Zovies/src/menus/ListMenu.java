@@ -74,6 +74,27 @@ public class ListMenu {
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
 	}
 	
+	public static void deletePersonalAccountMenu() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                     Delete personal account                      |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
+	public static void deleteUserMenu() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                           Delete user                            |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
+	public static void makeUserAdmin() {
+		
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+		ConsoleUtils.writeLine("|                       Make a user admin                           |");
+		ConsoleUtils.writeLine("+------------------------------------------------------------------+");
+	}
+	
 	public static void insertGenreMenu() {
 		
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");

@@ -2,7 +2,6 @@ package services;
 
 import java.util.List;
 
-import models.Genre;
 import models.User;
 import repositories.UserRepository;
 import utils.PasswordManager;
@@ -28,7 +27,6 @@ public class UserService {
     
 	public List<User> getAllUsers() {
 		List<User> users = usersRepository.getAllUsers();
-		
 		return users;
 	}
 	
@@ -36,6 +34,14 @@ public class UserService {
 		List<User> users = usersRepository.getAllAdmins();
 		
 		return users;
+	}
+
+	public void deleteUserById(int userId) {
+		usersRepository.deleteUserById(userId);
+	}
+	
+	public void makeUserAdmin(int userId) {
+		usersRepository.makeUserAdminById(userId);
 	}
 	
 	public User getRegisteredUser(String username, String password) {
