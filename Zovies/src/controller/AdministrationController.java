@@ -77,34 +77,26 @@ public class AdministrationController {
 					break;
 				}
 				case 14: {
-					
-					break;
-				}
-				case 15: {
-	
-					break;
-				}
-				case 16: {
 					deletePersonalAccountById();
 					break;
 				}
-				case 17: {
+				case 15: {
 					deleteUser();
 					break;
 				}
-				case 18: {
+				case 16: {
 					makeUserAdmin();
 					break;
 				}
-				case 19: {
+				case 17: {
 					viewAllUsers();
 					break;
 				}
-				case 20: {
+				case 18: {
 					viewAllAdmins();
 					break;
 				}
-				case 21: {
+				case 19: {
 					authenticationService.destroySession();
 					backToMainMenu();
 					break;

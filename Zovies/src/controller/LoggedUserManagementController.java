@@ -48,13 +48,10 @@ public class LoggedUserManagementController {
 					break;
 				}
 				case 7: {
-					break;
-				}
-				case 8: {
 					deletePersonalAccountById();
 					break;
 				}
-				case 9: {
+				case 8: {
 					authenticationService.destroySession();
 					backToMainMenu();
 					break;

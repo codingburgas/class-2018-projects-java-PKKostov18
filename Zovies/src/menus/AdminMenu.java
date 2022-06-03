@@ -37,14 +37,12 @@ public class AdminMenu {
 		ConsoleUtils.writeLine("|                         USER ACCOUNTS                            |");
 		ConsoleUtils.writeLine("|              ______________________________________              |");
 		ConsoleUtils.writeLine("|                                                                  |");
-		ConsoleUtils.writeLine("|                       14. Edit personal account                  |");
-		ConsoleUtils.writeLine("|                       15. Edit user account                      |");
-		ConsoleUtils.writeLine("|                       16. Delete personal account                |");
-		ConsoleUtils.writeLine("|                       17. Delete user account                    |");
-		ConsoleUtils.writeLine("|                       18. Make a user admin                      |");
-		ConsoleUtils.writeLine("|                       19. View all users                         |");
-		ConsoleUtils.writeLine("|                       20. View all admins                        |");
-		ConsoleUtils.writeLine("|                       21. LOG OUT                                |");
+		ConsoleUtils.writeLine("|                       14. Delete personal account                |");
+		ConsoleUtils.writeLine("|                       15. Delete user account                    |");
+		ConsoleUtils.writeLine("|                       16. Make a user admin                      |");
+		ConsoleUtils.writeLine("|                       17. View all users                         |");
+		ConsoleUtils.writeLine("|                       18. View all admins                        |");
+		ConsoleUtils.writeLine("|                       19. LOG OUT                                |");
 		ConsoleUtils.writeLine("|                                                                  |");
 		ConsoleUtils.writeLine("+------------------------------------------------------------------+");		
 		
