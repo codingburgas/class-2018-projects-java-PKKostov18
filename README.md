@@ -7,6 +7,8 @@
 
 ## Description
 
+We made our project so that everybody can see all their favourite movies and series, learn some information about them, see the actors that play in it and the genres of them. Our goal is to boost the Movie industry by allowing the users to explore new movies, genres and see actors, they have never seen before.
+
 ## Technologies
 
 ✅ Java 11
@@ -23,10 +25,6 @@
 - Plamen Kostov (Back-end developer)
 - Ilian Yanev (Back-end and Front-end developer)
 
-## Description
-
-We made our project so that everybody can see all their favourite movies and series, learn some information about them, see the actors that play in it and the genres of them. Our goal is to boost the Movie industry by allowing the users to explore new movies, genres and see actors, they have never seen before.
-
 ## How to run the project on your machine
 
 ### Step 1: Clone the repository
@@ -40,6 +38,8 @@ Open the command prompt and copy and paste this command:
 1. Install Java 11, link: https://java.com/en/download/help/windows_manual_download.html
 
 2. Install Maven +3.9.3, link: https://maven.apache.org/install.html
+
+3. Install JDBC 9.4, link: [JDBC](https://go.microsoft.com/fwlink/?linkid=2183120)
 
 ### Step 3: Execute the database script in your SSMS
 
