@@ -1,12 +1,12 @@
 USE [master]
 GO
-/****** Object:  Database [JavaProject]    Script Date: 2.6.2022 г. 18:52:37 ******/
+/****** Object:  Database [JavaProject]    Script Date: 6/3/2022 5:24:06 PM ******/
 CREATE DATABASE [JavaProject]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'JavaProject', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\JavaProject.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+( NAME = N'JavaProject', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\JavaProject.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
  LOG ON 
-( NAME = N'JavaProject_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\JavaProject_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+( NAME = N'JavaProject_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\JavaProject_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
  WITH CATALOG_COLLATION = DATABASE_DEFAULT
 GO
 ALTER DATABASE [JavaProject] SET COMPATIBILITY_LEVEL = 150
@@ -76,11 +76,13 @@ ALTER DATABASE [JavaProject] SET DELAYED_DURABILITY = DISABLED
 GO
 ALTER DATABASE [JavaProject] SET ACCELERATED_DATABASE_RECOVERY = OFF  
 GO
+EXEC sys.sp_db_vardecimal_storage_format N'JavaProject', N'ON'
+GO
 ALTER DATABASE [JavaProject] SET QUERY_STORE = OFF
 GO
 USE [JavaProject]
 GO
-/****** Object:  Table [dbo].[actors]    Script Date: 2.6.2022 г. 18:52:37 ******/
+/****** Object:  Table [dbo].[actors]    Script Date: 6/3/2022 5:24:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +96,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[actorsmovies]    Script Date: 2.6.2022 г. 18:52:37 ******/
+/****** Object:  Table [dbo].[actorsmovies]    Script Date: 6/3/2022 5:24:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +111,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[favourites]    Script Date: 2.6.2022 г. 18:52:37 ******/
+/****** Object:  Table [dbo].[favourites]    Script Date: 6/3/2022 5:24:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +126,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genres]    Script Date: 2.6.2022 г. 18:52:37 ******/
+/****** Object:  Table [dbo].[genres]    Script Date: 6/3/2022 5:24:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -138,7 +140,7 @@ CREATE TABLE [dbo].[genres](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[genresmovies]    Script Date: 2.6.2022 г. 18:52:37 ******/
+/****** Object:  Table [dbo].[genresmovies]    Script Date: 6/3/2022 5:24:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +155,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[movies]    Script Date: 2.6.2022 г. 18:52:37 ******/
+/****** Object:  Table [dbo].[movies]    Script Date: 6/3/2022 5:24:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,7 +176,7 @@ CREATE TABLE [dbo].[movies](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[users]    Script Date: 2.6.2022 г. 18:52:37 ******/
+/****** Object:  Table [dbo].[users]    Script Date: 6/3/2022 5:24:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -938,28 +940,6 @@ GO
 SET IDENTITY_INSERT [dbo].[movies] OFF
 GO
 SET IDENTITY_INSERT [dbo].[users] ON 
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (1, N'Plamen', N'Kostov', N'PKKostov18@codingburgas.bg', N'pacata69', N'plamen123', NULL, 0)
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (3, N'Ilian', N'Yanev', N'IMYanev18@codingburgas.bg', N'iyanev66', N'ilko123', NULL, 0)
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (4, N'Radoslav', N'Stoychev18@codingburgas.bg', N'RAStoychev18@codingburgas.bg', N'radofifa1', N'rado123', NULL, 0)
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (5, N'Ivan', N'Ivanov', N'ITIvanov18@codingburgas.bg', N'tsarivan', N'vanko123', NULL, 0)
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (6, N'Kaloyan', N'Andrikov', N'KNAndrikov18@codingburgas.bg', N'neotrax', N'kalata123', NULL, 0)
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (7, N'Jelqzko', N'Ivanov', N'ZAIivanov18@codingburgas.bg', N'jelqzko', N'jelqzko123', NULL, 0)
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (8, N'Plamen', N'Petkov', N'PCPetkov18@codingburgas.bg', N'paleca', N'paleca123', NULL, 0)
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (9, N'Stanislav', N'Todorov', N'SATodorov18@codingburgas.bg', N'ST', N'trunio123', NULL, 0)
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (10, N'Kristian', N'Lalev', N'KALalev18@codingburgas.bg', N'kavalkata', N'kavalkata123', NULL, 0)
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (11, N'Ben', N'Dover', N'BenYEEEES@gmail.com', N'Ben', N'2q/w1IN/JYyX8jWyf1Rf+8nBFG/SztBXH4+/Ou/w1tg=', N'Xd8SpZZrR+sYMTFKLgCY2A==', 0)
-GO
-INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (13, N'asd', N'asd', N'asd@gmail.com', N'sewuyyy', N'67qJAbrL5wLXI5OksEaEbwh3yT6rbolPY/IHPW+aCTU=', N'WQ6QlfPgQE7orNu6C+iXeg==', 0)
 GO
 INSERT [dbo].[users] ([UserId], [FirstName], [LastName], [Email], [Username], [Password], [Salt], [Admin]) VALUES (14, N'ilian', N'Yanev', N'unufri333@gmail.com', N'ilkoba', N'Br8pHCLsmvRDUDL/tyaxpIgK3bsbX+jLfrKThapSyPc=', N'iff3lXdXCS1cmXpbObyT4A==', 0)
 GO
