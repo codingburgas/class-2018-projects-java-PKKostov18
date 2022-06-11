@@ -24,6 +24,7 @@ We made our project so that everybody can see all their favourite movies and ser
 
 - Plamen Kostov (Back-end developer)
 - Ilian Yanev (Back-end and Front-end developer)
+- Radoslav Stoychev (QA Engineer)
 
 ## How to run the project on your machine
 
