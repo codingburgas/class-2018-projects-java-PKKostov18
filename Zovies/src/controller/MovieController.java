@@ -62,9 +62,9 @@ public class MovieController{
 		}
 		
 		ConsoleUtils.writeLine("Choose what you want to do: ");  
-		ConsoleUtils.writeLine("1 for see another movie info");
-		ConsoleUtils.writeLine("2 for favourite"); 
-		ConsoleUtils.writeLine("3 for back"); 
+		ConsoleUtils.writeLine("1 see another movie info");
+		ConsoleUtils.writeLine("2 favourite"); 
+		ConsoleUtils.writeLine("3 back"); 
 		ConsoleUtils.write("Choose: "); int option = ConsoleUtils.readInteger();
 		System.out.println();
 		
