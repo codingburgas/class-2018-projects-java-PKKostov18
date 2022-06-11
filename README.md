@@ -19,6 +19,7 @@ We made our project so that everybody can see all their favourite movies and ser
 
 ✅ JDBC
 
+✅ JUnit 5
 
 ## Our Team
 
