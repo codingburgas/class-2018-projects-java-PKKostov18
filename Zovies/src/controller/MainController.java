@@ -5,6 +5,7 @@ import menus.*;
 
 import utils.ConsoleUtils;
 import services.AuthenticationService;
+import services.RegisterService;
 
 public class MainController {
 	
@@ -12,9 +13,11 @@ public class MainController {
 	private RegisterController registerController = new RegisterController();
 	
 	private AuthenticationService authService;
+	private RegisterService regService;
 	
 	public MainController() {
         this.authService = AuthenticationService.getInstance();
+        this.regService = RegisterService.getInstance();
     }
 
 	public void run() {
@@ -46,6 +49,7 @@ public class MainController {
 	        
 		} else if(optionForAccount == 2) {
 			
+			regService.destroyCurrentRegisteredUser();
 			AccountMenu.register();
 			registerController.run();
 		}

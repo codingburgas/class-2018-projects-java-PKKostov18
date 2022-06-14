@@ -33,4 +33,8 @@ public class RegisterService {
 		
 		correctUser = usersRepository.insertUser(firstName, lastName, email, username, password, salt, false);
 	}
+	
+	public void destroyCurrentRegisteredUser() {
+		correctUser = false;  	
+    }
 }

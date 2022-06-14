@@ -286,7 +286,14 @@ public class MovieController{
 				while(option != 1) {
 					ErrorMenu.invalidInputError(); option = ConsoleUtils.readInteger();
 				} 
-				backToUserMenu();
+				User user = authService.getLoggedUser();
+				
+				if(user.getAdmin()) {
+					backToAdminMenu();
+				}
+				else {
+					backToUserMenu();
+				}
 			}
 			else {
 				ConsoleUtils.writeNewLine();
@@ -573,6 +580,10 @@ public class MovieController{
 		
 	    movie = movieService.getMovieOrSeriesByGenreAndMovieName(movieName, genre);
 	    
+	    if(movie != null) {
+	    	displayMovieSeriesInfo(movie);
+	    }
+	    
 	    while(movieService.getMovieOrSeriesByGenreAndMovieName(movieName, genre) == null) {
 	    	
 	    	ErrorMenu.invalidMovieName();
@@ -581,6 +592,7 @@ public class MovieController{
 		    
 		    if(movie != null) {
 		    	displayMovieSeriesInfo(movie);
+		    	break;
 		    }
 	    }
 	        
@@ -656,8 +668,6 @@ public class MovieController{
 		List<Movie> movies = movieService.getAllMoviesByActor(actor);
 		
 		while(movieService.getAllMoviesByActor(actor) == null) {
-			
-			
 			ErrorMenu.invalidActorName();
 			ConsoleUtils.write("Actor name: "); actor = ConsoleUtils.read();	
 			movies = movieService.getAllMoviesByActor(actor);
@@ -673,6 +683,10 @@ public class MovieController{
 		
 	    movie = movieService.getMovieOrSeriesByActorAndMovieName(actor, movieName);
 	    
+	    if(movie != null) {
+	    	displayMovieSeriesInfo(movie);
+	    }
+	    
 	    while(movieService.getMovieOrSeriesByActorAndMovieName(actor, movieName) == null) {
 	    	
 	    	ErrorMenu.invalidMovieName();
@@ -681,9 +695,10 @@ public class MovieController{
 		    
 		    if(movie != null) {
 		    	displayMovieSeriesInfo(movie);
+		    	break;
 		    }
 	    }
-		
+
 	    ConsoleUtils.writeNewLine();
 		ConsoleUtils.writeLine("Choose what you want to do: ");  
 		ConsoleUtils.writeLine("1 for see another movie info");
