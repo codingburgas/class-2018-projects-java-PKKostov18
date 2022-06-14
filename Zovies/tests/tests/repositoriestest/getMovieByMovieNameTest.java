@@ -9,14 +9,15 @@ import org.junit.jupiter.api.Test;
 import models.Movie;
 import repositories.MovieRepository;
 
-class getAllFavouriteMoviesAndSeriesTests {
+class getMovieByMovieNameTest {
 
 	@Test
-	void getAllMoviesAndSeriesByActorTests() {
+	void getMovieByMovieNameTests() {
 		MovieRepository test= new MovieRepository();
-		List<Movie>tests=test.getAllFavouriteMoviesAndSeries(14);
+		Movie tests=test.getMovieByMovieName("Rocky");
 		assertNotNull(tests);
 		
 	}
 
+	
 }
